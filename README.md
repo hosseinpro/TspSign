@@ -51,16 +51,10 @@ TSP Sign:
 
 00 87 P1 P2 00 LL LL [DATA]
 
-P1:
-	{
-	01: RSA 1024
-	02: RSA 2048
-	}
-P2:
-	{
-	01: Classic RSA
-	02: CRT RSA (faster version)
-	}
+P1 = 01:RSA1024 or 02:RSA2048
+
+P2 = 01:ClassicRSA or 02:CRT_RSA(faster version)
+
 LL LL: length of data in two bytes
 
 Read signature from buffer ((if your card does not support extended length):
@@ -70,15 +64,8 @@ LL LL: length of data
 
 Classic Sign (no tspSign):
 00 86 P1 P2 00 LL LL [DATA]
-P1:
-	{
-	01: RSA 1024
-	02: RSA 2048
-	}
-P2:
-	{
-	01: Classic RSA
-	02: CRT RSA (faster version)
-	}
+P1 = 01:RSA1024 or 02:RSA2048
+
+P2 = 01:ClassicRSA or 02:CRT_RSA(faster version)
 LL LL: length of data in two bytes
 
