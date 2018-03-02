@@ -48,7 +48,9 @@ LL LL: chunk size
 CHUNK: part of data
 
 TSP Sign:
+
 00 87 P1 P2 00 LL LL [DATA]
+
 P1:
 	{
 	01: RSA 1024
