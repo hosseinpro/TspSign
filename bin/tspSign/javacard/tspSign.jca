@@ -1,0 +1,3226 @@
+// converted by version 1.3
+// on Fri Mar 02 16:15:50 EST 2018
+
+.package tspSign {
+	.aid 0x11:0x22:0x33:0x44:0x55;
+	.version 1.0;
+
+	.imports {
+		0xA0:0x0:0x0:0x0:0x62:0x0:0x1 1.0;		//java/lang
+		0xA0:0x0:0x0:0x0:0x62:0x1:0x1 1.3;		//javacard/framework
+		0xA0:0x0:0x0:0x0:0x62:0x2:0x9 1.0;		//javacardx/apdu
+		0xA0:0x0:0x0:0x0:0x62:0x1:0x2 1.3;		//javacard/security
+	}
+
+	.applet {
+		0x11:0x22:0x33:0x44:0x55:0x66 tspSign;
+	}
+
+	.constantPool {
+		// 0
+		instanceFieldRef short TLV/Tag;
+		// 1
+		instanceFieldRef short TLV/Len;
+		// 2
+		instanceFieldRef short TLV/ValueIndex;
+		// 3
+		instanceFieldRef short TLV/NextTagIndex;
+		// 4
+		instanceFieldRef short[] TLV2/Offset;
+		// 5
+		instanceFieldRef short[] TLV2/Tag;
+		// 6
+		instanceFieldRef short[] TLV2/Len;
+		// 7
+		instanceFieldRef short[] TLV2/ValueIndex;
+		// 8
+		instanceFieldRef byte[] TimeStampResp/nonce;
+		// 9
+		instanceFieldRef short TimeStampResp/timeIndex;
+		// 10
+		instanceFieldRef short TimeStampResp/hashIndex;
+		// 11
+		instanceFieldRef short TimeStampResp/nonceIndex;
+		// 12
+		instanceFieldRef short TimeStampResp/certificateIndex;
+		// 13
+		instanceFieldRef short TimeStampResp/crlIndex;
+		// 14
+		instanceFieldRef short TimeStampResp/tstInfoIndex;
+		// 15
+		instanceFieldRef short TimeStampResp/tstInfoLen;
+		// 16
+		instanceFieldRef short TimeStampResp/signatureIndex;
+		// 17
+		instanceFieldRef short TimeStampResp/signatureLen;
+		// 18
+		instanceFieldRef byte[] TimeStampResp/time;
+		// 19
+		instanceFieldRef byte[] TimeStampResp/hash;
+		// 20
+		instanceFieldRef TLV TimeStampResp/tlv;
+		// 21
+		instanceFieldRef TLV2 TimeStampResp/tlv2;
+		// 22
+		instanceFieldRef short X509CRL/tbsCertListIndex;
+		// 23
+		instanceFieldRef short X509CRL/tbsCertListLen;
+		// 24
+		instanceFieldRef short X509CRL/signatureIndex;
+		// 25
+		instanceFieldRef short X509CRL/signatureLen;
+		// 26
+		instanceFieldRef short[] X509CRL/revokedCertsIndexes;
+		// 27
+		instanceFieldRef byte[] X509CRL/thisUpdate;
+		// 28
+		instanceFieldRef byte[] X509CRL/nextUpdate;
+		// 29
+		instanceFieldRef TLV X509CRL/tlv;
+		// 30
+		instanceFieldRef TLV2 X509CRL/tlv2;
+		// 31
+		instanceFieldRef short X509Certificate/tbsCertificateIndex;
+		// 32
+		instanceFieldRef short X509Certificate/tbsCertificateLen;
+		// 33
+		instanceFieldRef short X509Certificate/signatureIndex;
+		// 34
+		instanceFieldRef short X509Certificate/signatureLen;
+		// 35
+		instanceFieldRef short X509Certificate/publicKeyModulusIndex;
+		// 36
+		instanceFieldRef short X509Certificate/publicKeyModulusLen;
+		// 37
+		instanceFieldRef short X509Certificate/publicKeyExponentIndex;
+		// 38
+		instanceFieldRef short X509Certificate/publicKeyExponentLen;
+		// 39
+		instanceFieldRef byte[] X509Certificate/notBefore;
+		// 40
+		instanceFieldRef byte[] X509Certificate/notAfter;
+		// 41
+		instanceFieldRef TLV X509Certificate/tlv;
+		// 42
+		instanceFieldRef TLV2 X509Certificate/tlv2;
+		// 43
+		instanceFieldRef byte[] X509Certificate/serialNumber;
+		// 44
+		instanceFieldRef 1.9 tspSign/pin;
+		// 45
+		instanceFieldRef 3.14 tspSign/randomData;
+		// 46
+		instanceFieldRef byte[] tspSign/pinValue;
+		// 47
+		instanceFieldRef byte[] tspSign/nonce;
+		// 48
+		virtualMethodRef TLV2/Parse([BS[B)V;
+		// 49
+		staticFieldRef byte[] TimeStampResp/pathTSRResponse;
+		// 50
+		staticMethodRef 0.0.0()V;		// java/lang/Object.<init>()V
+		// 51
+		classRef TLV;
+		// 52
+		staticMethodRef TLV/<init>()V;
+		// 53
+		staticMethodRef 1.16.5(BB)S;		// javacard/framework/Util.makeShort(BB)S
+		// 54
+		classRef TLV2;
+		// 55
+		staticMethodRef TLV2/<init>()V;
+		// 56
+		staticMethodRef 1.8.15(SB)[S;		// javacard/framework/JCSystem.makeTransientShortArray(SB)[S
+		// 57
+		virtualMethodRef TLV/Parse([BS)V;
+		// 58
+		staticMethodRef 1.8.13(SB)[B;		// javacard/framework/JCSystem.makeTransientByteArray(SB)[B
+		// 59
+		staticFieldRef byte[] X509Certificate/pathCertificate;
+		// 60
+		staticFieldRef byte[] X509Certificate/pathPublicKey;
+		// 61
+		classRef tspSign;
+		// 62
+		staticMethodRef tspSign/<init>()V;
+		// 63
+		virtualMethodRef 1.3.2([BSB)V;		// register([BSB)V
+		// 64
+		staticMethodRef 1.3.0()V;		// javacard/framework/Applet.<init>()V
+		// 65
+		staticMethodRef 1.16.0([BS[BSS)B;		// javacard/framework/Util.arrayCompare([BS[BSS)B
+		// 66
+		staticFieldRef byte[] X509CRL/pathCrl;
+		// 67
+		classRef 1.9;		// javacard/framework/OwnerPIN
+		// 68
+		staticFieldRef byte tspSign/PIN_SIZE;
+		// 69
+		staticMethodRef 1.9.0(BB)V;		// javacard/framework/OwnerPIN.<init>(BB)V
+		// 70
+		virtualMethodRef 1.9.8([BSB)V;		// update([BSB)V
+		// 71
+		virtualMethodRef 1.9.6()V;		// resetAndUnblock()V
+		// 72
+		staticMethodRef 1.16.1([BS[BSS)S;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+		// 73
+		staticMethodRef 3.14.0(B)Ljavacard/security/RandomData;;		// javacard/security/RandomData.getInstance(B)Ljavacard/security/RandomData;
+			.descriptor	Ljavacard/security/RandomData;	3.14;
+
+		// 74
+		staticFieldRef byte[] TimeStampResp/pathTSRCommand;
+		// 75
+		staticMethodRef 3.13.0(BSZ)Ljavacard/security/Key;;		// javacard/security/KeyBuilder.buildKey(BSZ)Ljavacard/security/Key;
+			.descriptor	Ljavacard/security/Key;	3.0;
+
+		// 76
+		classRef 3.8;		// javacard/security/RSAPrivateKey
+		// 77
+		staticFieldRef 3.8 tspSign/cardPrivateKey;
+		// 78
+		staticFieldRef byte[] tspSign/cardPrivateKeyModulus;
+		// 79
+		staticFieldRef byte[] tspSign/cardPrivateKeyExponent;
+		// 80
+		staticFieldRef 3.8 tspSign/cardPrivateKey2;
+		// 81
+		staticFieldRef byte[] tspSign/cardPrivateKeyModulus2;
+		// 82
+		staticFieldRef byte[] tspSign/cardPrivateKeyExponent2;
+		// 83
+		classRef 3.7;		// javacard/security/RSAPrivateCrtKey
+		// 84
+		staticFieldRef 3.7 tspSign/cardPrivateCrtKey;
+		// 85
+		staticFieldRef byte[] tspSign/cardPrivateCrtKeyP;
+		// 86
+		staticFieldRef byte[] tspSign/cardPrivateCrtKeyQ;
+		// 87
+		staticFieldRef byte[] tspSign/cardPrivateCrtKeyDP;
+		// 88
+		staticFieldRef byte[] tspSign/cardPrivateCrtKeyDQ;
+		// 89
+		staticFieldRef byte[] tspSign/cardPrivateCrtKeyPQ;
+		// 90
+		classRef 3.9;		// javacard/security/RSAPublicKey
+		// 91
+		staticFieldRef 3.9 tspSign/caPublicKey;
+		// 92
+		staticFieldRef byte[] tspSign/caPublicKeyModulus;
+		// 93
+		staticFieldRef byte[] tspSign/caPublicKeyExponent;
+		// 94
+		staticFieldRef 3.9 tspSign/caPublicKey2;
+		// 95
+		staticFieldRef byte[] tspSign/caPublicKeyModulus2;
+		// 96
+		staticFieldRef byte[] tspSign/caPublicKeyExponent2;
+		// 97
+		staticFieldRef 3.7 tspSign/cardPrivateCrtKey2;
+		// 98
+		staticFieldRef byte[] tspSign/cardPrivateCrtKeyP2;
+		// 99
+		staticFieldRef byte[] tspSign/cardPrivateCrtKeyQ2;
+		// 100
+		staticFieldRef byte[] tspSign/cardPrivateCrtKeyDP2;
+		// 101
+		staticFieldRef byte[] tspSign/cardPrivateCrtKeyDQ2;
+		// 102
+		staticFieldRef byte[] tspSign/cardPrivateCrtKeyPQ2;
+		// 103
+		staticFieldRef 3.9 tspSign/tsaPublicKey;
+		// 104
+		staticFieldRef 3.9 tspSign/tsaPublicKey2;
+		// 105
+		classRef TimeStampResp;
+		// 106
+		staticMethodRef TimeStampResp/<init>()V;
+		// 107
+		staticFieldRef TimeStampResp tspSign/timeStampResp;
+		// 108
+		classRef X509Certificate;
+		// 109
+		staticMethodRef X509Certificate/<init>()V;
+		// 110
+		staticFieldRef X509Certificate tspSign/x509certificate;
+		// 111
+		classRef X509CRL;
+		// 112
+		staticMethodRef X509CRL/<init>()V;
+		// 113
+		staticFieldRef X509CRL tspSign/x509crl;
+		// 114
+		staticMethodRef 3.15.0(BZ)Ljavacard/security/Signature;;		// javacard/security/Signature.getInstance(BZ)Ljavacard/security/Signature;
+			.descriptor	Ljavacard/security/Signature;	3.15;
+
+		// 115
+		staticFieldRef 3.15 tspSign/signature;
+		// 116
+		classRef 1.13;		// javacard/framework/SystemException
+		// 117
+		virtualMethodRef 1.3.3()Z;		// selectingApplet()Z
+		// 118
+		virtualMethodRef 1.10.1()[B;		// getBuffer()[B
+		// 119
+		staticMethodRef tspSign/processGetChallenge(Ljavacard/framework/APDU;)V;
+			.descriptor	Ljavacard/framework/APDU;	1.10;
+
+		// 120
+		staticMethodRef tspSign/processVerify(Ljavacard/framework/APDU;)V;
+			.descriptor	Ljavacard/framework/APDU;	1.10;
+
+		// 121
+		staticMethodRef tspSign/processSign(Ljavacard/framework/APDU;)V;
+			.descriptor	Ljavacard/framework/APDU;	1.10;
+
+		// 122
+		staticMethodRef tspSign/processTSASign(Ljavacard/framework/APDU;)V;
+			.descriptor	Ljavacard/framework/APDU;	1.10;
+
+		// 123
+		virtualMethodRef tspSign/processFillBuffer(Ljavacard/framework/APDU;)V;
+			.descriptor	Ljavacard/framework/APDU;	1.10;
+
+		// 124
+		staticMethodRef tspSign/processGetResponse(Ljavacard/framework/APDU;)V;
+			.descriptor	Ljavacard/framework/APDU;	1.10;
+
+		// 125
+		staticMethodRef tspSign/processGarbageCollector(Ljavacard/framework/APDU;)V;
+			.descriptor	Ljavacard/framework/APDU;	1.10;
+
+		// 126
+		staticMethodRef 1.7.1(S)V;		// javacard/framework/ISOException.throwIt(S)V
+		// 127
+		virtualMethodRef 1.13.1()S;		// getReason()S
+		// 128
+		virtualMethodRef 3.14.1([BSS)V;		// generateData([BSS)V
+		// 129
+		virtualMethodRef 1.10.7()S;		// setOutgoing()S
+		// 130
+		virtualMethodRef 1.10.9(S)V;		// setOutgoingLength(S)V
+		// 131
+		virtualMethodRef 1.10.5([BSS)V;		// sendBytesLong([BSS)V
+		// 132
+		virtualMethodRef 1.10.6()S;		// setIncomingAndReceive()S
+		// 133
+		staticMethodRef 1.16.2([BS[BSS)S;		// javacard/framework/Util.arrayCopyNonAtomic([BS[BSS)S
+		// 134
+		virtualMethodRef 1.9.1([BSB)Z;		// check([BSB)Z
+		// 135
+		virtualMethodRef 1.9.2()B;		// getTriesRemaining()B
+		// 136
+		virtualMethodRef 1.10.15()S;		// getIncomingLength()S
+		// 137
+		virtualMethodRef 1.10.3(S)S;		// receiveBytes(S)S
+		// 138
+		staticFieldRef byte[] tspSign/bigBuffer;
+		// 139
+		virtualMethodRef tspSign/readExtendedLengthData(Ljavacard/framework/APDU;[BS)S;
+			.descriptor	Ljavacard/framework/APDU;	1.10;
+
+		// 140
+		virtualMethodRef 1.9.4()Z;		// isValidated()Z
+		// 141
+		virtualMethodRef 3.15.3(Ljavacard/security/Key;B)V;		// init(Ljavacard/security/Key;B)V
+			.descriptor	Ljavacard/security/Key;	3.0;
+
+		// 142
+		virtualMethodRef 3.15.5([BSS[BS)S;		// sign([BSS[BS)S
+		// 143
+		virtualMethodRef TimeStampResp/Parse([BSZ)V;
+		// 144
+		virtualMethodRef X509Certificate/Parse([BSZ)V;
+		// 145
+		virtualMethodRef 3.15.7([BSS[BSS)Z;		// verify([BSS[BSS)Z
+		// 146
+		virtualMethodRef X509CRL/Parse([BSZ)V;
+		// 147
+		virtualMethodRef X509CRL/isRevoked([BS[B)Z;
+		// 148
+		staticFieldRef byte[] tspSign/tsrResponseTemplate;
+		// 149
+		staticFieldRef byte[] tspSign/tsrResponseTemplate2;
+		// 150
+		staticMethodRef 1.8.18()V;		// javacard/framework/JCSystem.requestObjectDeletion()V
+	}
+
+	.class public TLV 0 extends 0.0 {		// extends java/lang/Object
+
+		.fields {
+			public short Tag 0;		// S
+			public short Len 1;		// S
+			public short ValueIndex 2;		// S
+			public short NextTagIndex 3;		// S
+		}
+
+		.publicMethodTable 1 {
+			equals(Ljava/lang/Object;)Z;
+			Parse([BS)V;
+		}
+
+		.packageMethodTable 0 {
+		}
+
+		.method public <init>()V 0 {
+			.stack 1;
+			.locals 0;
+
+				L0:	aload_0;
+					invokespecial 50;		// java/lang/Object.<init>()V
+					return;
+		}
+
+		.method public Parse([BS)V 1 {
+			.stack 5;
+			.locals 2;
+
+				L0:	sconst_0;
+					sstore_3;
+				L1:	aload_0;
+					sconst_0;
+					aload_1;
+					sload_2;
+					baload;
+					invokestatic 53;		// javacard/framework/Util.makeShort(BB)S
+					putfield_s 0;		// short tspSign/TLV.Tag
+					sinc 3 1;
+					sconst_0;
+					aload_1;
+					sload_2;
+					sconst_1;
+					sadd;
+					baload;
+					invokestatic 53;		// javacard/framework/Util.makeShort(BB)S
+					sstore 4;
+				L2:	sload 4;
+					sspush 128;
+					if_scmpge L4;
+				L3:	aload_0;
+					sload 4;
+					putfield_s 1;		// short tspSign/TLV.Len
+					sinc 3 1;
+					goto L7;
+				L4:	sload 4;
+					sspush 129;
+					if_scmpne L6;
+				L5:	aload_0;
+					sconst_0;
+					aload_1;
+					sload_2;
+					sconst_2;
+					sadd;
+					baload;
+					invokestatic 53;		// javacard/framework/Util.makeShort(BB)S
+					putfield_s 1;		// short tspSign/TLV.Len
+					sinc 3 2;
+					goto L7;
+				L6:	aload_0;
+					aload_1;
+					sload_2;
+					sconst_2;
+					sadd;
+					baload;
+					aload_1;
+					sload_2;
+					sconst_3;
+					sadd;
+					baload;
+					invokestatic 53;		// javacard/framework/Util.makeShort(BB)S
+					putfield_s 1;		// short tspSign/TLV.Len
+					sinc 3 3;
+				L7:	aload_0;
+					sload_2;
+					sload_3;
+					sadd;
+					putfield_s 2;		// short tspSign/TLV.ValueIndex
+					aload_0;
+					getfield_s_this 2;		// short tspSign/TLV.ValueIndex
+					getfield_s_this 1;		// short tspSign/TLV.Len
+					sadd;
+					putfield_s 3;		// short tspSign/TLV.NextTagIndex
+					return;
+		}
+
+	}
+
+	.class public TLV2 1 extends 0.0 {		// extends java/lang/Object
+
+		.fields {
+			public short[] Offset 0;		// [S
+			public short[] Tag 1;		// [S
+			public short[] Len 2;		// [S
+			public short[] ValueIndex 3;		// [S
+			private static final short MAX_PATH_LEN = 40;		// S
+		}
+
+		.publicMethodTable 1 {
+			equals(Ljava/lang/Object;)Z;
+			Parse([BS[B)V;
+		}
+
+		.packageMethodTable 0 {
+		}
+
+		.method public <init>()V 0 {
+			.stack 3;
+			.locals 0;
+
+				L0:	aload_0;
+					invokespecial 50;		// java/lang/Object.<init>()V
+					aload_0;
+					bspush 40;
+					sconst_2;
+					invokestatic 56;		// javacard/framework/JCSystem.makeTransientShortArray(SB)[S
+					putfield_a 4;		// reference tspSign/TLV2.Offset
+					aload_0;
+					bspush 40;
+					sconst_2;
+					invokestatic 56;		// javacard/framework/JCSystem.makeTransientShortArray(SB)[S
+					putfield_a 5;		// reference tspSign/TLV2.Tag
+					aload_0;
+					bspush 40;
+					sconst_2;
+					invokestatic 56;		// javacard/framework/JCSystem.makeTransientShortArray(SB)[S
+					putfield_a 6;		// reference tspSign/TLV2.Len
+					aload_0;
+					bspush 40;
+					sconst_2;
+					invokestatic 56;		// javacard/framework/JCSystem.makeTransientShortArray(SB)[S
+					putfield_a 7;		// reference tspSign/TLV2.ValueIndex
+					return;
+		}
+
+		.method public Parse([BS[B)V 1 {
+			.stack 5;
+			.locals 6;
+
+				L0:	aload_3;
+					arraylength;
+					sstore 4;
+				L1:	sload 4;
+					bspush 40;
+					if_scmple L3;
+				L2:	return;
+				L3:	sconst_0;
+					sstore 5;
+				L4:	sconst_0;
+					sstore 6;
+				L5:	sconst_0;
+					sstore 7;
+				L6:	sconst_0;
+					sstore 8;
+				L7:	sload 8;
+					sload 4;
+					if_scmpge_w L21;
+				L8:	aload_3;
+					sload 8;
+					baload;
+					sstore 7;
+					sload 7;
+					sconst_1;
+					if_scmpne L10;
+				L9:	sload_2;
+					sload 5;
+					sadd;
+					sstore_2;
+					goto L12;
+				L10:	sload 7;
+					sconst_2;
+					if_scmpne L12;
+				L11:	sload_2;
+					sload 5;
+					sload 6;
+					sadd;
+					sadd;
+					sstore_2;
+				L12:	sconst_0;
+					aload_1;
+					sload_2;
+					sconst_1;
+					sadd;
+					baload;
+					invokestatic 53;		// javacard/framework/Util.makeShort(BB)S
+					sstore 9;
+				L13:	sload 9;
+					sspush 130;
+					if_scmpne L15;
+				L14:	aload_1;
+					sload_2;
+					sconst_2;
+					sadd;
+					baload;
+					aload_1;
+					sload_2;
+					sconst_3;
+					sadd;
+					baload;
+					invokestatic 53;		// javacard/framework/Util.makeShort(BB)S
+					sstore 6;
+					sconst_4;
+					sstore 5;
+					goto L19;
+				L15:	sload 9;
+					sspush 129;
+					if_scmpne L17;
+				L16:	sconst_0;
+					aload_1;
+					sload_2;
+					sconst_2;
+					sadd;
+					baload;
+					invokestatic 53;		// javacard/framework/Util.makeShort(BB)S
+					sstore 6;
+					sconst_3;
+					sstore 5;
+					goto L19;
+				L17:	sload 9;
+					sspush 128;
+					if_scmpge L19;
+				L18:	sload 9;
+					sstore 6;
+					sconst_2;
+					sstore 5;
+				L19:	getfield_a_this 4;		// reference tspSign/TLV2.Offset
+					sload 8;
+					sload_2;
+					sastore;
+					getfield_a_this 5;		// reference tspSign/TLV2.Tag
+					sload 8;
+					sconst_0;
+					aload_1;
+					sload_2;
+					baload;
+					invokestatic 53;		// javacard/framework/Util.makeShort(BB)S
+					sastore;
+					getfield_a_this 6;		// reference tspSign/TLV2.Len
+					sload 8;
+					sload 6;
+					sastore;
+					getfield_a_this 7;		// reference tspSign/TLV2.ValueIndex
+					sload 8;
+					sload_2;
+					sload 5;
+					sadd;
+					sastore;
+				L20:	sinc 8 1;
+					goto_w L7;
+				L21:	return;
+		}
+
+	}
+
+	.class public TimeStampResp 2 extends 0.0 {		// extends java/lang/Object
+
+		.fields {
+			public short timeIndex 0;		// S
+			public short hashIndex 1;		// S
+			public short nonceIndex 2;		// S
+			public short certificateIndex 3;		// S
+			public short crlIndex 4;		// S
+			public short tstInfoIndex 5;		// S
+			public short tstInfoLen 6;		// S
+			public short signatureIndex 7;		// S
+			public short signatureLen 8;		// S
+			public byte[] nonce 9;		// [B
+			public byte[] time 10;		// [B
+			public byte[] hash 11;		// [B
+			private TLV tlv 12;		// LtspSign/TLV;
+			private TLV2 tlv2 13;		// LtspSign/TLV2;
+			private static final byte[] pathTSRCommand = {0,1,2,1,2,1,1,2,2,1,2,1,1,1,2,2,1,2,2,2,2,2,1,2,1,2,1,1,2,2,2,2,2};		// [B
+			private static final byte[] pathTSRResponse = {0,1,2,1,2,1,1,2,2,1,2,1,1,1,2,2,1,2,2,2,2,1,2,1,1,2,2,2,2,2};		// [B
+		}
+
+		.publicMethodTable 1 {
+			equals(Ljava/lang/Object;)Z;
+			Parse([BS)V;
+			Parse([BSZ)V;
+		}
+
+		.packageMethodTable 0 {
+		}
+
+		.method public <init>()V 0 {
+			.stack 3;
+			.locals 0;
+
+				L0:	aload_0;
+					invokespecial 50;		// java/lang/Object.<init>()V
+					aload_0;
+					aconst_null;
+					putfield_a 8;		// reference tspSign/TimeStampResp.nonce
+					aload_0;
+					sconst_0;
+					putfield_s 9;		// short tspSign/TimeStampResp.timeIndex
+					aload_0;
+					sconst_0;
+					putfield_s 10;		// short tspSign/TimeStampResp.hashIndex
+					aload_0;
+					sconst_0;
+					putfield_s 11;		// short tspSign/TimeStampResp.nonceIndex
+					aload_0;
+					sconst_0;
+					putfield_s 12;		// short tspSign/TimeStampResp.certificateIndex
+					aload_0;
+					sconst_0;
+					putfield_s 13;		// short tspSign/TimeStampResp.crlIndex
+					aload_0;
+					sconst_0;
+					putfield_s 14;		// short tspSign/TimeStampResp.tstInfoIndex
+					aload_0;
+					sconst_0;
+					putfield_s 15;		// short tspSign/TimeStampResp.tstInfoLen
+					aload_0;
+					sconst_0;
+					putfield_s 16;		// short tspSign/TimeStampResp.signatureIndex
+					aload_0;
+					sconst_0;
+					putfield_s 17;		// short tspSign/TimeStampResp.signatureLen
+					aload_0;
+					bspush 14;
+					newarray 11;
+					putfield_a 18;		// reference tspSign/TimeStampResp.time
+					aload_0;
+					bspush 20;
+					newarray 11;
+					putfield_a 19;		// reference tspSign/TimeStampResp.hash
+					aload_0;
+					new 51;		// tspSign/TLV
+					dup;
+					invokespecial 52;		// tspSign/TLV.<init>()V
+					putfield_a 20;		// reference tspSign/TimeStampResp.tlv
+					aload_0;
+					new 54;		// tspSign/TLV2
+					dup;
+					invokespecial 55;		// tspSign/TLV2.<init>()V
+					putfield_a 21;		// reference tspSign/TimeStampResp.tlv2
+					return;
+		}
+
+		.method public Parse([BS)V 1 {
+			.stack 5;
+			.locals 22;
+
+				L0:	getfield_a_this 20;		// reference tspSign/TimeStampResp.tlv
+					aload_1;
+					sload_2;
+					invokevirtual 57;		// Parse([BS)V
+					getfield_a_this 20;		// reference tspSign/TimeStampResp.tlv
+					getfield_s 2;		// short tspSign/TLV.ValueIndex
+					sstore_3;
+				L1:	getfield_a_this 20;		// reference tspSign/TimeStampResp.tlv
+					aload_1;
+					sload_3;
+					invokevirtual 57;		// Parse([BS)V
+					getfield_a_this 20;		// reference tspSign/TimeStampResp.tlv
+					getfield_s 3;		// short tspSign/TLV.NextTagIndex
+					sstore 4;
+				L2:	getfield_a_this 20;		// reference tspSign/TimeStampResp.tlv
+					aload_1;
+					sload 4;
+					invokevirtual 57;		// Parse([BS)V
+					getfield_a_this 20;		// reference tspSign/TimeStampResp.tlv
+					getfield_s 2;		// short tspSign/TLV.ValueIndex
+					sstore 5;
+				L3:	getfield_a_this 20;		// reference tspSign/TimeStampResp.tlv
+					aload_1;
+					sload 5;
+					invokevirtual 57;		// Parse([BS)V
+					getfield_a_this 20;		// reference tspSign/TimeStampResp.tlv
+					getfield_s 3;		// short tspSign/TLV.NextTagIndex
+					sstore 6;
+				L4:	getfield_a_this 20;		// reference tspSign/TimeStampResp.tlv
+					aload_1;
+					sload 6;
+					invokevirtual 57;		// Parse([BS)V
+					getfield_a_this 20;		// reference tspSign/TimeStampResp.tlv
+					getfield_s 2;		// short tspSign/TLV.ValueIndex
+					sstore 7;
+				L5:	getfield_a_this 20;		// reference tspSign/TimeStampResp.tlv
+					aload_1;
+					sload 7;
+					invokevirtual 57;		// Parse([BS)V
+					getfield_a_this 20;		// reference tspSign/TimeStampResp.tlv
+					getfield_s 2;		// short tspSign/TLV.ValueIndex
+					sstore 8;
+				L6:	getfield_a_this 20;		// reference tspSign/TimeStampResp.tlv
+					aload_1;
+					sload 8;
+					invokevirtual 57;		// Parse([BS)V
+					getfield_a_this 20;		// reference tspSign/TimeStampResp.tlv
+					getfield_s 3;		// short tspSign/TLV.NextTagIndex
+					sstore 9;
+				L7:	getfield_a_this 20;		// reference tspSign/TimeStampResp.tlv
+					aload_1;
+					sload 9;
+					invokevirtual 57;		// Parse([BS)V
+					getfield_a_this 20;		// reference tspSign/TimeStampResp.tlv
+					getfield_s 3;		// short tspSign/TLV.NextTagIndex
+					sstore 10;
+				L8:	getfield_a_this 20;		// reference tspSign/TimeStampResp.tlv
+					aload_1;
+					sload 10;
+					invokevirtual 57;		// Parse([BS)V
+					getfield_a_this 20;		// reference tspSign/TimeStampResp.tlv
+					getfield_s 3;		// short tspSign/TLV.NextTagIndex
+					sstore 11;
+				L9:	getfield_a_this 20;		// reference tspSign/TimeStampResp.tlv
+					aload_1;
+					sload 11;
+					invokevirtual 57;		// Parse([BS)V
+					getfield_a_this 20;		// reference tspSign/TimeStampResp.tlv
+					getfield_s 3;		// short tspSign/TLV.NextTagIndex
+					sstore 12;
+				L10:	getfield_a_this 20;		// reference tspSign/TimeStampResp.tlv
+					aload_1;
+					sload 12;
+					invokevirtual 57;		// Parse([BS)V
+					sconst_0;
+					sstore 13;
+				L11:	getfield_a_this 20;		// reference tspSign/TimeStampResp.tlv
+					getfield_s 0;		// short tspSign/TLV.Tag
+					sspush 161;
+					if_scmpeq L13;
+				L12:	sload 12;
+					sstore 13;
+					sconst_0;
+					sstore 12;
+					goto L14;
+				L13:	getfield_a_this 20;		// reference tspSign/TimeStampResp.tlv
+					getfield_s 3;		// short tspSign/TLV.NextTagIndex
+					sstore 13;
+					getfield_a_this 20;		// reference tspSign/TimeStampResp.tlv
+					aload_1;
+					sload 13;
+					invokevirtual 57;		// Parse([BS)V
+				L14:	getfield_a_this 20;		// reference tspSign/TimeStampResp.tlv
+					aload_1;
+					sload 10;
+					invokevirtual 57;		// Parse([BS)V
+					getfield_a_this 20;		// reference tspSign/TimeStampResp.tlv
+					getfield_s 2;		// short tspSign/TLV.ValueIndex
+					sstore 14;
+				L15:	getfield_a_this 20;		// reference tspSign/TimeStampResp.tlv
+					aload_1;
+					sload 14;
+					invokevirtual 57;		// Parse([BS)V
+					getfield_a_this 20;		// reference tspSign/TimeStampResp.tlv
+					getfield_s 3;		// short tspSign/TLV.NextTagIndex
+					sstore 15;
+				L16:	getfield_a_this 20;		// reference tspSign/TimeStampResp.tlv
+					aload_1;
+					sload 15;
+					invokevirtual 57;		// Parse([BS)V
+					getfield_a_this 20;		// reference tspSign/TimeStampResp.tlv
+					getfield_s 2;		// short tspSign/TLV.ValueIndex
+					sstore 16;
+				L17:	getfield_a_this 20;		// reference tspSign/TimeStampResp.tlv
+					aload_1;
+					sload 16;
+					invokevirtual 57;		// Parse([BS)V
+					aload_0;
+					getfield_a_this 20;		// reference tspSign/TimeStampResp.tlv
+					getfield_s 2;		// short tspSign/TLV.ValueIndex
+					putfield_s 14;		// short tspSign/TimeStampResp.tstInfoIndex
+					getfield_a_this 20;		// reference tspSign/TimeStampResp.tlv
+					aload_1;
+					getfield_s_this 14;		// short tspSign/TimeStampResp.tstInfoIndex
+					invokevirtual 57;		// Parse([BS)V
+					getfield_a_this 20;		// reference tspSign/TimeStampResp.tlv
+					getfield_s 2;		// short tspSign/TLV.ValueIndex
+					sstore 17;
+				L18:	getfield_a_this 20;		// reference tspSign/TimeStampResp.tlv
+					aload_1;
+					sload 17;
+					invokevirtual 57;		// Parse([BS)V
+					getfield_a_this 20;		// reference tspSign/TimeStampResp.tlv
+					getfield_s 3;		// short tspSign/TLV.NextTagIndex
+					sstore 18;
+				L19:	getfield_a_this 20;		// reference tspSign/TimeStampResp.tlv
+					aload_1;
+					sload 18;
+					invokevirtual 57;		// Parse([BS)V
+					getfield_a_this 20;		// reference tspSign/TimeStampResp.tlv
+					getfield_s 3;		// short tspSign/TLV.NextTagIndex
+					sstore 19;
+				L20:	getfield_a_this 20;		// reference tspSign/TimeStampResp.tlv
+					aload_1;
+					sload 19;
+					invokevirtual 57;		// Parse([BS)V
+					getfield_a_this 20;		// reference tspSign/TimeStampResp.tlv
+					getfield_s 3;		// short tspSign/TLV.NextTagIndex
+					sstore 20;
+				L21:	getfield_a_this 20;		// reference tspSign/TimeStampResp.tlv
+					aload_1;
+					sload 20;
+					invokevirtual 57;		// Parse([BS)V
+					getfield_a_this 20;		// reference tspSign/TimeStampResp.tlv
+					getfield_s 3;		// short tspSign/TLV.NextTagIndex
+					sstore 21;
+				L22:	getfield_a_this 20;		// reference tspSign/TimeStampResp.tlv
+					aload_1;
+					sload 21;
+					invokevirtual 57;		// Parse([BS)V
+					aload_0;
+					getfield_a_this 20;		// reference tspSign/TimeStampResp.tlv
+					getfield_s 3;		// short tspSign/TLV.NextTagIndex
+					putfield_s 11;		// short tspSign/TimeStampResp.nonceIndex
+					getfield_a_this 20;		// reference tspSign/TimeStampResp.tlv
+					aload_1;
+					getfield_s_this 11;		// short tspSign/TimeStampResp.nonceIndex
+					invokevirtual 57;		// Parse([BS)V
+					getfield_a_this 20;		// reference tspSign/TimeStampResp.tlv
+					getfield_s 0;		// short tspSign/TLV.Tag
+					sconst_2;
+					if_scmpeq L24;
+				L23:	aload_0;
+					sconst_0;
+					putfield_s 11;		// short tspSign/TimeStampResp.nonceIndex
+				L24:	getfield_a_this 20;		// reference tspSign/TimeStampResp.tlv
+					aload_1;
+					sload 13;
+					invokevirtual 57;		// Parse([BS)V
+					getfield_a_this 20;		// reference tspSign/TimeStampResp.tlv
+					getfield_s 2;		// short tspSign/TLV.ValueIndex
+					sstore 22;
+				L25:	getfield_a_this 20;		// reference tspSign/TimeStampResp.tlv
+					aload_1;
+					sload 22;
+					invokevirtual 57;		// Parse([BS)V
+					getfield_a_this 20;		// reference tspSign/TimeStampResp.tlv
+					aload_1;
+					getfield_a_this 20;		// reference tspSign/TimeStampResp.tlv
+					getfield_s 2;		// short tspSign/TLV.ValueIndex
+					invokevirtual 57;		// Parse([BS)V
+					getfield_a_this 20;		// reference tspSign/TimeStampResp.tlv
+					aload_1;
+					getfield_a_this 20;		// reference tspSign/TimeStampResp.tlv
+					getfield_s 3;		// short tspSign/TLV.NextTagIndex
+					invokevirtual 57;		// Parse([BS)V
+					getfield_a_this 20;		// reference tspSign/TimeStampResp.tlv
+					aload_1;
+					getfield_a_this 20;		// reference tspSign/TimeStampResp.tlv
+					getfield_s 3;		// short tspSign/TLV.NextTagIndex
+					invokevirtual 57;		// Parse([BS)V
+					getfield_a_this 20;		// reference tspSign/TimeStampResp.tlv
+					aload_1;
+					getfield_a_this 20;		// reference tspSign/TimeStampResp.tlv
+					getfield_s 3;		// short tspSign/TLV.NextTagIndex
+					invokevirtual 57;		// Parse([BS)V
+					getfield_a_this 20;		// reference tspSign/TimeStampResp.tlv
+					aload_1;
+					getfield_a_this 20;		// reference tspSign/TimeStampResp.tlv
+					getfield_s 3;		// short tspSign/TLV.NextTagIndex
+					invokevirtual 57;		// Parse([BS)V
+					getfield_a_this 20;		// reference tspSign/TimeStampResp.tlv
+					aload_1;
+					getfield_a_this 20;		// reference tspSign/TimeStampResp.tlv
+					getfield_s 3;		// short tspSign/TLV.NextTagIndex
+					invokevirtual 57;		// Parse([BS)V
+					aload_0;
+					getfield_a_this 20;		// reference tspSign/TimeStampResp.tlv
+					getfield_s 2;		// short tspSign/TLV.ValueIndex
+					putfield_s 16;		// short tspSign/TimeStampResp.signatureIndex
+					aload_0;
+					getfield_a_this 20;		// reference tspSign/TimeStampResp.tlv
+					getfield_s 1;		// short tspSign/TLV.Len
+					putfield_s 17;		// short tspSign/TimeStampResp.signatureLen
+					getfield_s_this 11;		// short tspSign/TimeStampResp.nonceIndex
+					ifeq L27;
+				L26:	getfield_a_this 20;		// reference tspSign/TimeStampResp.tlv
+					aload_1;
+					getfield_s_this 11;		// short tspSign/TimeStampResp.nonceIndex
+					invokevirtual 57;		// Parse([BS)V
+					aload_0;
+					getfield_a_this 20;		// reference tspSign/TimeStampResp.tlv
+					getfield_s 1;		// short tspSign/TLV.Len
+					sconst_2;
+					invokestatic 58;		// javacard/framework/JCSystem.makeTransientByteArray(SB)[B
+					putfield_a 8;		// reference tspSign/TimeStampResp.nonce
+					aload_1;
+					getfield_a_this 20;		// reference tspSign/TimeStampResp.tlv
+					getfield_s 2;		// short tspSign/TLV.ValueIndex
+					getfield_a_this 8;		// reference tspSign/TimeStampResp.nonce
+					sconst_0;
+					getfield_a_this 20;		// reference tspSign/TimeStampResp.tlv
+					getfield_s 1;		// short tspSign/TLV.Len
+					invokestatic 72;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					pop;
+				L27:	getfield_a_this 20;		// reference tspSign/TimeStampResp.tlv
+					aload_1;
+					sload 21;
+					invokevirtual 57;		// Parse([BS)V
+					aload_0;
+					getfield_a_this 20;		// reference tspSign/TimeStampResp.tlv
+					getfield_s 2;		// short tspSign/TLV.ValueIndex
+					putfield_s 9;		// short tspSign/TimeStampResp.timeIndex
+					aload_1;
+					getfield_s_this 9;		// short tspSign/TimeStampResp.timeIndex
+					getfield_a_this 18;		// reference tspSign/TimeStampResp.time
+					sconst_0;
+					bspush 14;
+					invokestatic 72;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					pop;
+					getfield_a_this 20;		// reference tspSign/TimeStampResp.tlv
+					aload_1;
+					sload 19;
+					invokevirtual 57;		// Parse([BS)V
+					getfield_a_this 20;		// reference tspSign/TimeStampResp.tlv
+					getfield_s 2;		// short tspSign/TLV.ValueIndex
+					sstore 23;
+				L28:	getfield_a_this 20;		// reference tspSign/TimeStampResp.tlv
+					aload_1;
+					sload 23;
+					invokevirtual 57;		// Parse([BS)V
+					getfield_a_this 20;		// reference tspSign/TimeStampResp.tlv
+					getfield_s 3;		// short tspSign/TLV.NextTagIndex
+					sstore 24;
+				L29:	getfield_a_this 20;		// reference tspSign/TimeStampResp.tlv
+					aload_1;
+					sload 24;
+					invokevirtual 57;		// Parse([BS)V
+					aload_0;
+					getfield_a_this 20;		// reference tspSign/TimeStampResp.tlv
+					getfield_s 2;		// short tspSign/TLV.ValueIndex
+					putfield_s 10;		// short tspSign/TimeStampResp.hashIndex
+					aload_1;
+					getfield_s_this 10;		// short tspSign/TimeStampResp.hashIndex
+					getfield_a_this 19;		// reference tspSign/TimeStampResp.hash
+					sconst_0;
+					bspush 20;
+					invokestatic 72;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					pop;
+					getfield_a_this 20;		// reference tspSign/TimeStampResp.tlv
+					aload_1;
+					sload 11;
+					invokevirtual 57;		// Parse([BS)V
+					aload_0;
+					getfield_a_this 20;		// reference tspSign/TimeStampResp.tlv
+					getfield_s 2;		// short tspSign/TLV.ValueIndex
+					putfield_s 12;		// short tspSign/TimeStampResp.certificateIndex
+					sload 12;
+					ifeq L31;
+				L30:	getfield_a_this 20;		// reference tspSign/TimeStampResp.tlv
+					aload_1;
+					sload 12;
+					invokevirtual 57;		// Parse([BS)V
+					aload_0;
+					getfield_a_this 20;		// reference tspSign/TimeStampResp.tlv
+					getfield_s 2;		// short tspSign/TLV.ValueIndex
+					putfield_s 13;		// short tspSign/TimeStampResp.crlIndex
+				L31:	getfield_a_this 20;		// reference tspSign/TimeStampResp.tlv
+					aload_1;
+					getfield_s_this 14;		// short tspSign/TimeStampResp.tstInfoIndex
+					invokevirtual 57;		// Parse([BS)V
+					aload_0;
+					getfield_a_this 20;		// reference tspSign/TimeStampResp.tlv
+					getfield_s 3;		// short tspSign/TLV.NextTagIndex
+					getfield_s_this 14;		// short tspSign/TimeStampResp.tstInfoIndex
+					ssub;
+					putfield_s 15;		// short tspSign/TimeStampResp.tstInfoLen
+					return;
+		}
+
+		.method public Parse([BSZ)V 2 {
+			.stack 6;
+			.locals 2;
+
+				L0:	sload_3;
+					sconst_1;
+					if_scmpne_w L5;
+				L1:	getfield_a_this 21;		// reference tspSign/TimeStampResp.tlv2
+					aload_1;
+					sload_2;
+					getstatic_a 74;		// reference tspSign/TimeStampResp.pathTSRCommand
+					invokevirtual 48;		// Parse([BS[B)V
+					aload_0;
+					getfield_a_this 21;		// reference tspSign/TimeStampResp.tlv2
+					getfield_a 4;		// reference tspSign/TLV2.Offset
+					bspush 12;
+					saload;
+					putfield_s 14;		// short tspSign/TimeStampResp.tstInfoIndex
+					getfield_a_this 21;		// reference tspSign/TimeStampResp.tlv2
+					getfield_a 4;		// reference tspSign/TLV2.Offset
+					bspush 17;
+					saload;
+					sstore 4;
+				L2:	getfield_a_this 21;		// reference tspSign/TimeStampResp.tlv2
+					getfield_a 4;		// reference tspSign/TLV2.Offset
+					bspush 19;
+					saload;
+					sstore 5;
+				L3:	aload_0;
+					getfield_a_this 21;		// reference tspSign/TimeStampResp.tlv2
+					getfield_a 4;		// reference tspSign/TLV2.Offset
+					bspush 20;
+					saload;
+					putfield_s 11;		// short tspSign/TimeStampResp.nonceIndex
+					aload_0;
+					getfield_a_this 21;		// reference tspSign/TimeStampResp.tlv2
+					getfield_a 4;		// reference tspSign/TLV2.Offset
+					bspush 22;
+					saload;
+					putfield_s 12;		// short tspSign/TimeStampResp.certificateIndex
+					aload_0;
+					getfield_a_this 21;		// reference tspSign/TimeStampResp.tlv2
+					getfield_a 4;		// reference tspSign/TLV2.Offset
+					bspush 24;
+					saload;
+					putfield_s 13;		// short tspSign/TimeStampResp.crlIndex
+					aload_0;
+					getfield_a_this 21;		// reference tspSign/TimeStampResp.tlv2
+					getfield_a 6;		// reference tspSign/TLV2.Len
+					bspush 20;
+					saload;
+					sconst_2;
+					invokestatic 58;		// javacard/framework/JCSystem.makeTransientByteArray(SB)[B
+					putfield_a 8;		// reference tspSign/TimeStampResp.nonce
+					aload_1;
+					getfield_a_this 21;		// reference tspSign/TimeStampResp.tlv2
+					getfield_a 7;		// reference tspSign/TLV2.ValueIndex
+					bspush 20;
+					saload;
+					getfield_a_this 8;		// reference tspSign/TimeStampResp.nonce
+					sconst_0;
+					getfield_a_this 21;		// reference tspSign/TimeStampResp.tlv2
+					getfield_a 6;		// reference tspSign/TLV2.Len
+					bspush 20;
+					saload;
+					invokestatic 72;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					pop;
+					aload_0;
+					getfield_a_this 21;		// reference tspSign/TimeStampResp.tlv2
+					getfield_a 7;		// reference tspSign/TLV2.ValueIndex
+					bspush 19;
+					saload;
+					putfield_s 9;		// short tspSign/TimeStampResp.timeIndex
+					aload_1;
+					getfield_s_this 9;		// short tspSign/TimeStampResp.timeIndex
+					getfield_a_this 18;		// reference tspSign/TimeStampResp.time
+					sconst_0;
+					bspush 14;
+					invokestatic 72;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					pop;
+					aload_0;
+					getfield_a_this 21;		// reference tspSign/TimeStampResp.tlv2
+					getfield_a 7;		// reference tspSign/TLV2.ValueIndex
+					bspush 17;
+					saload;
+					putfield_s 10;		// short tspSign/TimeStampResp.hashIndex
+					aload_1;
+					getfield_s_this 10;		// short tspSign/TimeStampResp.hashIndex
+					getfield_a_this 19;		// reference tspSign/TimeStampResp.hash
+					sconst_0;
+					bspush 20;
+					invokestatic 72;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					pop;
+					aload_0;
+					getfield_a_this 21;		// reference tspSign/TimeStampResp.tlv2
+					getfield_a 4;		// reference tspSign/TLV2.Offset
+					bspush 21;
+					saload;
+					getfield_s_this 14;		// short tspSign/TimeStampResp.tstInfoIndex
+					ssub;
+					putfield_s 15;		// short tspSign/TimeStampResp.tstInfoLen
+					aload_0;
+					getfield_a_this 21;		// reference tspSign/TimeStampResp.tlv2
+					getfield_a 7;		// reference tspSign/TLV2.ValueIndex
+					bspush 32;
+					saload;
+					putfield_s 16;		// short tspSign/TimeStampResp.signatureIndex
+					aload_0;
+					getfield_a_this 21;		// reference tspSign/TimeStampResp.tlv2
+					getfield_a 6;		// reference tspSign/TLV2.Len
+					bspush 32;
+					saload;
+					putfield_s 17;		// short tspSign/TimeStampResp.signatureLen
+				L4:	goto_w L6;
+				L5:	getfield_a_this 21;		// reference tspSign/TimeStampResp.tlv2
+					aload_1;
+					sload_2;
+					getstatic_a 49;		// reference tspSign/TimeStampResp.pathTSRResponse
+					invokevirtual 48;		// Parse([BS[B)V
+					aload_0;
+					getfield_a_this 21;		// reference tspSign/TimeStampResp.tlv2
+					getfield_a 4;		// reference tspSign/TLV2.Offset
+					bspush 12;
+					saload;
+					putfield_s 14;		// short tspSign/TimeStampResp.tstInfoIndex
+					aload_0;
+					sconst_0;
+					putfield_s 11;		// short tspSign/TimeStampResp.nonceIndex
+					aload_0;
+					getfield_a_this 21;		// reference tspSign/TimeStampResp.tlv2
+					getfield_a 4;		// reference tspSign/TLV2.Offset
+					bspush 21;
+					saload;
+					putfield_s 12;		// short tspSign/TimeStampResp.certificateIndex
+					aload_0;
+					sconst_0;
+					putfield_s 13;		// short tspSign/TimeStampResp.crlIndex
+					aload_0;
+					aconst_null;
+					putfield_a 8;		// reference tspSign/TimeStampResp.nonce
+					aload_0;
+					getfield_a_this 21;		// reference tspSign/TimeStampResp.tlv2
+					getfield_a 7;		// reference tspSign/TLV2.ValueIndex
+					bspush 19;
+					saload;
+					putfield_s 9;		// short tspSign/TimeStampResp.timeIndex
+					aload_1;
+					getfield_s_this 9;		// short tspSign/TimeStampResp.timeIndex
+					getfield_a_this 18;		// reference tspSign/TimeStampResp.time
+					sconst_0;
+					bspush 14;
+					invokestatic 72;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					pop;
+					aload_0;
+					getfield_a_this 21;		// reference tspSign/TimeStampResp.tlv2
+					getfield_a 7;		// reference tspSign/TLV2.ValueIndex
+					bspush 17;
+					saload;
+					putfield_s 10;		// short tspSign/TimeStampResp.hashIndex
+					aload_1;
+					getfield_s_this 10;		// short tspSign/TimeStampResp.hashIndex
+					getfield_a_this 19;		// reference tspSign/TimeStampResp.hash
+					sconst_0;
+					bspush 20;
+					invokestatic 72;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					pop;
+					aload_0;
+					getfield_a_this 21;		// reference tspSign/TimeStampResp.tlv2
+					getfield_a 4;		// reference tspSign/TLV2.Offset
+					bspush 20;
+					saload;
+					getfield_s_this 14;		// short tspSign/TimeStampResp.tstInfoIndex
+					ssub;
+					putfield_s 15;		// short tspSign/TimeStampResp.tstInfoLen
+					aload_0;
+					getfield_a_this 21;		// reference tspSign/TimeStampResp.tlv2
+					getfield_a 7;		// reference tspSign/TLV2.ValueIndex
+					bspush 29;
+					saload;
+					putfield_s 16;		// short tspSign/TimeStampResp.signatureIndex
+					aload_0;
+					getfield_a_this 21;		// reference tspSign/TimeStampResp.tlv2
+					getfield_a 6;		// reference tspSign/TLV2.Len
+					bspush 29;
+					saload;
+					putfield_s 17;		// short tspSign/TimeStampResp.signatureLen
+				L6:	return;
+		}
+
+	}
+
+	.class public X509CRL 3 extends 0.0 {		// extends java/lang/Object
+
+		.fields {
+			public short tbsCertListIndex 0;		// S
+			public short tbsCertListLen 1;		// S
+			public short signatureIndex 2;		// S
+			public short signatureLen 3;		// S
+			public byte[] thisUpdate 4;		// [B
+			public byte[] nextUpdate 5;		// [B
+			private short[] revokedCertsIndexes 6;		// [S
+			private TLV tlv 7;		// LtspSign/TLV;
+			private TLV2 tlv2 8;		// LtspSign/TLV2;
+			private static final byte[] pathCrl = {0,1,1,2,2,2,2,2,2,2,2};		// [B
+		}
+
+		.publicMethodTable 1 {
+			equals(Ljava/lang/Object;)Z;
+			Parse([BS)V;
+			isRevoked([BS[B)Z;
+			Parse([BSZ)V;
+		}
+
+		.packageMethodTable 0 {
+		}
+
+		.method public <init>()V 0 {
+			.stack 3;
+			.locals 0;
+
+				L0:	aload_0;
+					invokespecial 50;		// java/lang/Object.<init>()V
+					aload_0;
+					sconst_0;
+					putfield_s 22;		// short tspSign/X509CRL.tbsCertListIndex
+					aload_0;
+					sconst_0;
+					putfield_s 23;		// short tspSign/X509CRL.tbsCertListLen
+					aload_0;
+					sconst_0;
+					putfield_s 24;		// short tspSign/X509CRL.signatureIndex
+					aload_0;
+					sconst_0;
+					putfield_s 25;		// short tspSign/X509CRL.signatureLen
+					aload_0;
+					aconst_null;
+					putfield_a 26;		// reference tspSign/X509CRL.revokedCertsIndexes
+					aload_0;
+					bspush 12;
+					newarray 11;
+					putfield_a 27;		// reference tspSign/X509CRL.thisUpdate
+					aload_0;
+					bspush 12;
+					newarray 11;
+					putfield_a 28;		// reference tspSign/X509CRL.nextUpdate
+					aload_0;
+					new 51;		// tspSign/TLV
+					dup;
+					invokespecial 52;		// tspSign/TLV.<init>()V
+					putfield_a 29;		// reference tspSign/X509CRL.tlv
+					aload_0;
+					new 54;		// tspSign/TLV2
+					dup;
+					invokespecial 55;		// tspSign/TLV2.<init>()V
+					putfield_a 30;		// reference tspSign/X509CRL.tlv2
+					return;
+		}
+
+		.method public Parse([BS)V 1 {
+			.stack 5;
+			.locals 10;
+
+				L0:	getfield_a_this 29;		// reference tspSign/X509CRL.tlv
+					aload_1;
+					sload_2;
+					invokevirtual 57;		// Parse([BS)V
+					aload_0;
+					getfield_a_this 29;		// reference tspSign/X509CRL.tlv
+					getfield_s 2;		// short tspSign/TLV.ValueIndex
+					putfield_s 22;		// short tspSign/X509CRL.tbsCertListIndex
+					getfield_a_this 29;		// reference tspSign/X509CRL.tlv
+					aload_1;
+					getfield_s_this 22;		// short tspSign/X509CRL.tbsCertListIndex
+					invokevirtual 57;		// Parse([BS)V
+					getfield_a_this 29;		// reference tspSign/X509CRL.tlv
+					getfield_s 3;		// short tspSign/TLV.NextTagIndex
+					sstore_3;
+				L1:	getfield_a_this 29;		// reference tspSign/X509CRL.tlv
+					aload_1;
+					sload_3;
+					invokevirtual 57;		// Parse([BS)V
+					aload_0;
+					getfield_a_this 29;		// reference tspSign/X509CRL.tlv
+					getfield_s 3;		// short tspSign/TLV.NextTagIndex
+					putfield_s 24;		// short tspSign/X509CRL.signatureIndex
+					getfield_a_this 29;		// reference tspSign/X509CRL.tlv
+					aload_1;
+					getfield_s_this 24;		// short tspSign/X509CRL.signatureIndex
+					invokevirtual 57;		// Parse([BS)V
+					getfield_a_this 29;		// reference tspSign/X509CRL.tlv
+					aload_1;
+					getfield_s_this 22;		// short tspSign/X509CRL.tbsCertListIndex
+					invokevirtual 57;		// Parse([BS)V
+					getfield_a_this 29;		// reference tspSign/X509CRL.tlv
+					getfield_s 2;		// short tspSign/TLV.ValueIndex
+					sstore 4;
+				L2:	sconst_0;
+					sstore 5;
+				L3:	getfield_a_this 29;		// reference tspSign/X509CRL.tlv
+					aload_1;
+					sload 4;
+					invokevirtual 57;		// Parse([BS)V
+					getfield_a_this 29;		// reference tspSign/X509CRL.tlv
+					getfield_s 0;		// short tspSign/TLV.Tag
+					sconst_2;
+					if_scmpne L5;
+				L4:	getfield_a_this 29;		// reference tspSign/X509CRL.tlv
+					getfield_s 3;		// short tspSign/TLV.NextTagIndex
+					sstore 5;
+					getfield_a_this 29;		// reference tspSign/X509CRL.tlv
+					aload_1;
+					getfield_a_this 29;		// reference tspSign/X509CRL.tlv
+					getfield_s 3;		// short tspSign/TLV.NextTagIndex
+					invokevirtual 57;		// Parse([BS)V
+					goto L6;
+				L5:	sload 4;
+					sstore 5;
+					sconst_0;
+					sstore 4;
+				L6:	getfield_a_this 29;		// reference tspSign/X509CRL.tlv
+					getfield_s 3;		// short tspSign/TLV.NextTagIndex
+					sstore 6;
+				L7:	getfield_a_this 29;		// reference tspSign/X509CRL.tlv
+					aload_1;
+					sload 6;
+					invokevirtual 57;		// Parse([BS)V
+					getfield_a_this 29;		// reference tspSign/X509CRL.tlv
+					getfield_s 3;		// short tspSign/TLV.NextTagIndex
+					sstore 7;
+				L8:	getfield_a_this 29;		// reference tspSign/X509CRL.tlv
+					aload_1;
+					sload 7;
+					invokevirtual 57;		// Parse([BS)V
+					getfield_a_this 29;		// reference tspSign/X509CRL.tlv
+					getfield_s 3;		// short tspSign/TLV.NextTagIndex
+					sstore 8;
+				L9:	getfield_a_this 29;		// reference tspSign/X509CRL.tlv
+					aload_1;
+					sload 8;
+					invokevirtual 57;		// Parse([BS)V
+					getfield_a_this 29;		// reference tspSign/X509CRL.tlv
+					getfield_s 3;		// short tspSign/TLV.NextTagIndex
+					sstore 9;
+				L10:	getfield_a_this 29;		// reference tspSign/X509CRL.tlv
+					aload_1;
+					sload 9;
+					invokevirtual 57;		// Parse([BS)V
+					getfield_a_this 29;		// reference tspSign/X509CRL.tlv
+					getfield_s 3;		// short tspSign/TLV.NextTagIndex
+					sstore 10;
+				L11:	getfield_a_this 29;		// reference tspSign/X509CRL.tlv
+					getfield_s 0;		// short tspSign/TLV.Tag
+					sspush 160;
+					if_scmpne L13;
+				L12:	sload 9;
+					sstore 10;
+					sconst_0;
+					sstore 9;
+				L13:	getfield_a_this 29;		// reference tspSign/X509CRL.tlv
+					aload_1;
+					sload 7;
+					invokevirtual 57;		// Parse([BS)V
+					aload_1;
+					getfield_a_this 29;		// reference tspSign/X509CRL.tlv
+					getfield_s 2;		// short tspSign/TLV.ValueIndex
+					getfield_a_this 27;		// reference tspSign/X509CRL.thisUpdate
+					sconst_0;
+					bspush 12;
+					invokestatic 72;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					pop;
+					getfield_a_this 29;		// reference tspSign/X509CRL.tlv
+					aload_1;
+					sload 8;
+					invokevirtual 57;		// Parse([BS)V
+					aload_1;
+					getfield_a_this 29;		// reference tspSign/X509CRL.tlv
+					getfield_s 2;		// short tspSign/TLV.ValueIndex
+					getfield_a_this 28;		// reference tspSign/X509CRL.nextUpdate
+					sconst_0;
+					bspush 12;
+					invokestatic 72;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					pop;
+					getfield_a_this 29;		// reference tspSign/X509CRL.tlv
+					aload_1;
+					getfield_s_this 24;		// short tspSign/X509CRL.signatureIndex
+					invokevirtual 57;		// Parse([BS)V
+					aload_0;
+					getfield_a_this 29;		// reference tspSign/X509CRL.tlv
+					getfield_s 2;		// short tspSign/TLV.ValueIndex
+					sconst_1;
+					sadd;
+					putfield_s 24;		// short tspSign/X509CRL.signatureIndex
+					aload_0;
+					getfield_a_this 29;		// reference tspSign/X509CRL.tlv
+					getfield_s 1;		// short tspSign/TLV.Len
+					sconst_1;
+					ssub;
+					putfield_s 25;		// short tspSign/X509CRL.signatureLen
+					getfield_a_this 29;		// reference tspSign/X509CRL.tlv
+					aload_1;
+					getfield_s_this 22;		// short tspSign/X509CRL.tbsCertListIndex
+					invokevirtual 57;		// Parse([BS)V
+					aload_0;
+					getfield_a_this 29;		// reference tspSign/X509CRL.tlv
+					getfield_s 3;		// short tspSign/TLV.NextTagIndex
+					getfield_s_this 22;		// short tspSign/X509CRL.tbsCertListIndex
+					ssub;
+					putfield_s 23;		// short tspSign/X509CRL.tbsCertListLen
+					sload 9;
+					ifne L15;
+				L14:	aload_0;
+					sconst_0;
+					sconst_2;
+					invokestatic 56;		// javacard/framework/JCSystem.makeTransientShortArray(SB)[S
+					putfield_a 26;		// reference tspSign/X509CRL.revokedCertsIndexes
+					return;
+				L15:	sconst_0;
+					sstore 11;
+				L16:	getfield_a_this 29;		// reference tspSign/X509CRL.tlv
+					aload_1;
+					sload 9;
+					invokevirtual 57;		// Parse([BS)V
+					getfield_a_this 29;		// reference tspSign/X509CRL.tlv
+					aload_1;
+					getfield_a_this 29;		// reference tspSign/X509CRL.tlv
+					getfield_s 2;		// short tspSign/TLV.ValueIndex
+					invokevirtual 57;		// Parse([BS)V
+					sinc 11 1;
+				L17:	getfield_a_this 29;		// reference tspSign/X509CRL.tlv
+					getfield_s 3;		// short tspSign/TLV.NextTagIndex
+					sload 10;
+					if_scmpge L19;
+				L18:	getfield_a_this 29;		// reference tspSign/X509CRL.tlv
+					aload_1;
+					getfield_a_this 29;		// reference tspSign/X509CRL.tlv
+					getfield_s 3;		// short tspSign/TLV.NextTagIndex
+					invokevirtual 57;		// Parse([BS)V
+					sinc 11 1;
+					goto L17;
+				L19:	aload_0;
+					sload 11;
+					sconst_2;
+					invokestatic 56;		// javacard/framework/JCSystem.makeTransientShortArray(SB)[S
+					putfield_a 26;		// reference tspSign/X509CRL.revokedCertsIndexes
+					getfield_a_this 29;		// reference tspSign/X509CRL.tlv
+					aload_1;
+					sload 9;
+					invokevirtual 57;		// Parse([BS)V
+					getfield_a_this 29;		// reference tspSign/X509CRL.tlv
+					aload_1;
+					getfield_a_this 29;		// reference tspSign/X509CRL.tlv
+					getfield_s 2;		// short tspSign/TLV.ValueIndex
+					invokevirtual 57;		// Parse([BS)V
+					sconst_0;
+					sstore 12;
+				L20:	sload 12;
+					sload 11;
+					if_scmpge L22;
+				L21:	getfield_a_this 26;		// reference tspSign/X509CRL.revokedCertsIndexes
+					sload 12;
+					getfield_a_this 29;		// reference tspSign/X509CRL.tlv
+					getfield_s 2;		// short tspSign/TLV.ValueIndex
+					sastore;
+					getfield_a_this 29;		// reference tspSign/X509CRL.tlv
+					aload_1;
+					getfield_a_this 29;		// reference tspSign/X509CRL.tlv
+					getfield_s 3;		// short tspSign/TLV.NextTagIndex
+					invokevirtual 57;		// Parse([BS)V
+					sinc 12 1;
+					goto L20;
+				L22:	return;
+		}
+
+		.method public isRevoked([BS[B)Z 2 {
+			.stack 6;
+			.locals 1;
+
+				L0:	sconst_0;
+					sstore 4;
+				L1:	sload 4;
+					getfield_a_this 26;		// reference tspSign/X509CRL.revokedCertsIndexes
+					arraylength;
+					if_scmpge L6;
+				L2:	getfield_a_this 29;		// reference tspSign/X509CRL.tlv
+					aload_1;
+					getfield_a_this 26;		// reference tspSign/X509CRL.revokedCertsIndexes
+					sload 4;
+					saload;
+					invokevirtual 57;		// Parse([BS)V
+					getfield_a_this 29;		// reference tspSign/X509CRL.tlv
+					getfield_s 1;		// short tspSign/TLV.Len
+					sconst_1;
+					ssub;
+					aload_3;
+					arraylength;
+					if_scmpne L5;
+				L3:	aload_3;
+					sconst_0;
+					aload_1;
+					getfield_a_this 29;		// reference tspSign/X509CRL.tlv
+					getfield_s 2;		// short tspSign/TLV.ValueIndex
+					sconst_1;
+					sadd;
+					getfield_a_this 29;		// reference tspSign/X509CRL.tlv
+					getfield_s 1;		// short tspSign/TLV.Len
+					sconst_1;
+					ssub;
+					invokestatic 65;		// javacard/framework/Util.arrayCompare([BS[BSS)B
+					ifne L5;
+				L4:	sconst_1;
+					sreturn;
+				L5:	sinc 4 1;
+					goto L1;
+				L6:	sconst_0;
+					sreturn;
+		}
+
+		.method public Parse([BSZ)V 3 {
+			.stack 5;
+			.locals 4;
+
+				L0:	getfield_a_this 30;		// reference tspSign/X509CRL.tlv2
+					aload_1;
+					sload_2;
+					getstatic_a 66;		// reference tspSign/X509CRL.pathCrl
+					invokevirtual 48;		// Parse([BS[B)V
+					aload_0;
+					getfield_a_this 30;		// reference tspSign/X509CRL.tlv2
+					getfield_a 4;		// reference tspSign/TLV2.Offset
+					sconst_1;
+					saload;
+					putfield_s 22;		// short tspSign/X509CRL.tbsCertListIndex
+					aload_0;
+					getfield_a_this 30;		// reference tspSign/X509CRL.tlv2
+					getfield_a 4;		// reference tspSign/TLV2.Offset
+					bspush 10;
+					saload;
+					putfield_s 24;		// short tspSign/X509CRL.signatureIndex
+					getfield_a_this 30;		// reference tspSign/X509CRL.tlv2
+					getfield_a 4;		// reference tspSign/TLV2.Offset
+					bspush 7;
+					saload;
+					sstore 4;
+				L1:	getfield_a_this 30;		// reference tspSign/X509CRL.tlv2
+					getfield_a 4;		// reference tspSign/TLV2.Offset
+					bspush 8;
+					saload;
+					sstore 5;
+				L2:	aload_1;
+					getfield_a_this 30;		// reference tspSign/X509CRL.tlv2
+					getfield_a 7;		// reference tspSign/TLV2.ValueIndex
+					sconst_5;
+					saload;
+					getfield_a_this 27;		// reference tspSign/X509CRL.thisUpdate
+					sconst_0;
+					bspush 12;
+					invokestatic 72;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					pop;
+					aload_1;
+					getfield_a_this 30;		// reference tspSign/X509CRL.tlv2
+					getfield_a 7;		// reference tspSign/TLV2.ValueIndex
+					bspush 6;
+					saload;
+					getfield_a_this 28;		// reference tspSign/X509CRL.nextUpdate
+					sconst_0;
+					bspush 12;
+					invokestatic 72;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					pop;
+					aload_0;
+					getfield_a_this 30;		// reference tspSign/X509CRL.tlv2
+					getfield_a 7;		// reference tspSign/TLV2.ValueIndex
+					bspush 10;
+					saload;
+					sconst_1;
+					sadd;
+					putfield_s 24;		// short tspSign/X509CRL.signatureIndex
+					aload_0;
+					getfield_a_this 30;		// reference tspSign/X509CRL.tlv2
+					getfield_a 6;		// reference tspSign/TLV2.Len
+					bspush 10;
+					saload;
+					sconst_1;
+					ssub;
+					putfield_s 25;		// short tspSign/X509CRL.signatureLen
+					aload_0;
+					getfield_a_this 30;		// reference tspSign/X509CRL.tlv2
+					getfield_a 4;		// reference tspSign/TLV2.Offset
+					bspush 9;
+					saload;
+					getfield_s_this 22;		// short tspSign/X509CRL.tbsCertListIndex
+					ssub;
+					putfield_s 23;		// short tspSign/X509CRL.tbsCertListLen
+					sload 4;
+					ifne L4;
+				L3:	aload_0;
+					sconst_0;
+					sconst_2;
+					invokestatic 56;		// javacard/framework/JCSystem.makeTransientShortArray(SB)[S
+					putfield_a 26;		// reference tspSign/X509CRL.revokedCertsIndexes
+					return;
+				L4:	sconst_0;
+					sstore 6;
+				L5:	getfield_a_this 29;		// reference tspSign/X509CRL.tlv
+					aload_1;
+					sload 4;
+					invokevirtual 57;		// Parse([BS)V
+					getfield_a_this 29;		// reference tspSign/X509CRL.tlv
+					aload_1;
+					getfield_a_this 29;		// reference tspSign/X509CRL.tlv
+					getfield_s 2;		// short tspSign/TLV.ValueIndex
+					invokevirtual 57;		// Parse([BS)V
+					sinc 6 1;
+				L6:	getfield_a_this 29;		// reference tspSign/X509CRL.tlv
+					getfield_s 3;		// short tspSign/TLV.NextTagIndex
+					sload 5;
+					if_scmpge L8;
+				L7:	getfield_a_this 29;		// reference tspSign/X509CRL.tlv
+					aload_1;
+					getfield_a_this 29;		// reference tspSign/X509CRL.tlv
+					getfield_s 3;		// short tspSign/TLV.NextTagIndex
+					invokevirtual 57;		// Parse([BS)V
+					sinc 6 1;
+					goto L6;
+				L8:	aload_0;
+					sload 6;
+					sconst_2;
+					invokestatic 56;		// javacard/framework/JCSystem.makeTransientShortArray(SB)[S
+					putfield_a 26;		// reference tspSign/X509CRL.revokedCertsIndexes
+					getfield_a_this 29;		// reference tspSign/X509CRL.tlv
+					aload_1;
+					sload 4;
+					invokevirtual 57;		// Parse([BS)V
+					getfield_a_this 29;		// reference tspSign/X509CRL.tlv
+					aload_1;
+					getfield_a_this 29;		// reference tspSign/X509CRL.tlv
+					getfield_s 2;		// short tspSign/TLV.ValueIndex
+					invokevirtual 57;		// Parse([BS)V
+					sconst_0;
+					sstore 7;
+				L9:	sload 7;
+					sload 6;
+					if_scmpge L11;
+				L10:	getfield_a_this 26;		// reference tspSign/X509CRL.revokedCertsIndexes
+					sload 7;
+					getfield_a_this 29;		// reference tspSign/X509CRL.tlv
+					getfield_s 2;		// short tspSign/TLV.ValueIndex
+					sastore;
+					getfield_a_this 29;		// reference tspSign/X509CRL.tlv
+					aload_1;
+					getfield_a_this 29;		// reference tspSign/X509CRL.tlv
+					getfield_s 3;		// short tspSign/TLV.NextTagIndex
+					invokevirtual 57;		// Parse([BS)V
+					sinc 7 1;
+					goto L9;
+				L11:	return;
+		}
+
+	}
+
+	.class public X509Certificate 4 extends 0.0 {		// extends java/lang/Object
+
+		.fields {
+			public short tbsCertificateIndex 0;		// S
+			public short tbsCertificateLen 1;		// S
+			public short signatureIndex 2;		// S
+			public short signatureLen 3;		// S
+			public short publicKeyModulusIndex 4;		// S
+			public short publicKeyModulusLen 5;		// S
+			public short publicKeyExponentIndex 6;		// S
+			public short publicKeyExponentLen 7;		// S
+			public byte[] serialNumber 8;		// [B
+			public byte[] notBefore 9;		// [B
+			public byte[] notAfter 10;		// [B
+			private TLV tlv 11;		// LtspSign/TLV;
+			private TLV2 tlv2 12;		// LtspSign/TLV2;
+			private static final byte[] pathCertificate = {0,1,1,2,2,2,2,1,2,2,2,1,2,2,2,2};		// [B
+			private static final byte[] pathPublicKey = {0,1,2};		// [B
+		}
+
+		.publicMethodTable 1 {
+			equals(Ljava/lang/Object;)Z;
+			Parse([BS)V;
+			Parse([BSZ)V;
+		}
+
+		.packageMethodTable 0 {
+		}
+
+		.method public <init>()V 0 {
+			.stack 3;
+			.locals 0;
+
+				L0:	aload_0;
+					invokespecial 50;		// java/lang/Object.<init>()V
+					aload_0;
+					sconst_0;
+					putfield_s 31;		// short tspSign/X509Certificate.tbsCertificateIndex
+					aload_0;
+					sconst_0;
+					putfield_s 32;		// short tspSign/X509Certificate.tbsCertificateLen
+					aload_0;
+					sconst_0;
+					putfield_s 33;		// short tspSign/X509Certificate.signatureIndex
+					aload_0;
+					sconst_0;
+					putfield_s 34;		// short tspSign/X509Certificate.signatureLen
+					aload_0;
+					sconst_0;
+					putfield_s 35;		// short tspSign/X509Certificate.publicKeyModulusIndex
+					aload_0;
+					sconst_0;
+					putfield_s 36;		// short tspSign/X509Certificate.publicKeyModulusLen
+					aload_0;
+					sconst_0;
+					putfield_s 37;		// short tspSign/X509Certificate.publicKeyExponentIndex
+					aload_0;
+					sconst_0;
+					putfield_s 38;		// short tspSign/X509Certificate.publicKeyExponentLen
+					aload_0;
+					bspush 12;
+					newarray 11;
+					putfield_a 39;		// reference tspSign/X509Certificate.notBefore
+					aload_0;
+					bspush 12;
+					newarray 11;
+					putfield_a 40;		// reference tspSign/X509Certificate.notAfter
+					aload_0;
+					new 51;		// tspSign/TLV
+					dup;
+					invokespecial 52;		// tspSign/TLV.<init>()V
+					putfield_a 41;		// reference tspSign/X509Certificate.tlv
+					aload_0;
+					new 54;		// tspSign/TLV2
+					dup;
+					invokespecial 55;		// tspSign/TLV2.<init>()V
+					putfield_a 42;		// reference tspSign/X509Certificate.tlv2
+					return;
+		}
+
+		.method public Parse([BS)V 1 {
+			.stack 6;
+			.locals 8;
+
+				L0:	getfield_a_this 41;		// reference tspSign/X509Certificate.tlv
+					aload_1;
+					sload_2;
+					invokevirtual 57;		// Parse([BS)V
+					aload_0;
+					getfield_a_this 41;		// reference tspSign/X509Certificate.tlv
+					getfield_s 2;		// short tspSign/TLV.ValueIndex
+					putfield_s 31;		// short tspSign/X509Certificate.tbsCertificateIndex
+					getfield_a_this 41;		// reference tspSign/X509Certificate.tlv
+					aload_1;
+					getfield_s_this 31;		// short tspSign/X509Certificate.tbsCertificateIndex
+					invokevirtual 57;		// Parse([BS)V
+					getfield_a_this 41;		// reference tspSign/X509Certificate.tlv
+					getfield_s 3;		// short tspSign/TLV.NextTagIndex
+					sstore_3;
+				L1:	getfield_a_this 41;		// reference tspSign/X509Certificate.tlv
+					aload_1;
+					sload_3;
+					invokevirtual 57;		// Parse([BS)V
+					aload_0;
+					getfield_a_this 41;		// reference tspSign/X509Certificate.tlv
+					getfield_s 3;		// short tspSign/TLV.NextTagIndex
+					putfield_s 33;		// short tspSign/X509Certificate.signatureIndex
+					getfield_a_this 41;		// reference tspSign/X509Certificate.tlv
+					aload_1;
+					getfield_s_this 33;		// short tspSign/X509Certificate.signatureIndex
+					invokevirtual 57;		// Parse([BS)V
+					getfield_a_this 41;		// reference tspSign/X509Certificate.tlv
+					aload_1;
+					getfield_s_this 31;		// short tspSign/X509Certificate.tbsCertificateIndex
+					invokevirtual 57;		// Parse([BS)V
+					getfield_a_this 41;		// reference tspSign/X509Certificate.tlv
+					getfield_s 2;		// short tspSign/TLV.ValueIndex
+					sstore 4;
+				L2:	sconst_0;
+					sstore 5;
+				L3:	getfield_a_this 41;		// reference tspSign/X509Certificate.tlv
+					aload_1;
+					sload 4;
+					invokevirtual 57;		// Parse([BS)V
+					getfield_a_this 41;		// reference tspSign/X509Certificate.tlv
+					getfield_s 0;		// short tspSign/TLV.Tag
+					sspush 160;
+					if_scmpne L5;
+				L4:	getfield_a_this 41;		// reference tspSign/X509Certificate.tlv
+					getfield_s 3;		// short tspSign/TLV.NextTagIndex
+					sstore 5;
+					getfield_a_this 41;		// reference tspSign/X509Certificate.tlv
+					aload_1;
+					getfield_a_this 41;		// reference tspSign/X509Certificate.tlv
+					getfield_s 3;		// short tspSign/TLV.NextTagIndex
+					invokevirtual 57;		// Parse([BS)V
+					goto L6;
+				L5:	sload 4;
+					sstore 5;
+					sconst_0;
+					sstore 4;
+				L6:	getfield_a_this 41;		// reference tspSign/X509Certificate.tlv
+					getfield_s 3;		// short tspSign/TLV.NextTagIndex
+					sstore 6;
+				L7:	getfield_a_this 41;		// reference tspSign/X509Certificate.tlv
+					aload_1;
+					sload 6;
+					invokevirtual 57;		// Parse([BS)V
+					getfield_a_this 41;		// reference tspSign/X509Certificate.tlv
+					getfield_s 3;		// short tspSign/TLV.NextTagIndex
+					sstore 7;
+				L8:	getfield_a_this 41;		// reference tspSign/X509Certificate.tlv
+					aload_1;
+					sload 7;
+					invokevirtual 57;		// Parse([BS)V
+					getfield_a_this 41;		// reference tspSign/X509Certificate.tlv
+					getfield_s 3;		// short tspSign/TLV.NextTagIndex
+					sstore 8;
+				L9:	getfield_a_this 41;		// reference tspSign/X509Certificate.tlv
+					aload_1;
+					sload 8;
+					invokevirtual 57;		// Parse([BS)V
+					getfield_a_this 41;		// reference tspSign/X509Certificate.tlv
+					getfield_s 3;		// short tspSign/TLV.NextTagIndex
+					sstore 9;
+				L10:	getfield_a_this 41;		// reference tspSign/X509Certificate.tlv
+					aload_1;
+					sload 9;
+					invokevirtual 57;		// Parse([BS)V
+					getfield_a_this 41;		// reference tspSign/X509Certificate.tlv
+					getfield_s 3;		// short tspSign/TLV.NextTagIndex
+					sstore 10;
+				L11:	getfield_a_this 41;		// reference tspSign/X509Certificate.tlv
+					aload_1;
+					sload 10;
+					invokevirtual 57;		// Parse([BS)V
+					getfield_a_this 41;		// reference tspSign/X509Certificate.tlv
+					aload_1;
+					sload 5;
+					invokevirtual 57;		// Parse([BS)V
+					aload_0;
+					getfield_a_this 41;		// reference tspSign/X509Certificate.tlv
+					getfield_s 1;		// short tspSign/TLV.Len
+					sconst_1;
+					ssub;
+					sconst_2;
+					invokestatic 58;		// javacard/framework/JCSystem.makeTransientByteArray(SB)[B
+					putfield_a 43;		// reference tspSign/X509Certificate.serialNumber
+					aload_1;
+					getfield_a_this 41;		// reference tspSign/X509Certificate.tlv
+					getfield_s 2;		// short tspSign/TLV.ValueIndex
+					sconst_1;
+					sadd;
+					getfield_a_this 43;		// reference tspSign/X509Certificate.serialNumber
+					sconst_0;
+					getfield_a_this 41;		// reference tspSign/X509Certificate.tlv
+					getfield_s 1;		// short tspSign/TLV.Len
+					sconst_1;
+					ssub;
+					invokestatic 72;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					pop;
+					getfield_a_this 41;		// reference tspSign/X509Certificate.tlv
+					aload_1;
+					sload 8;
+					invokevirtual 57;		// Parse([BS)V
+					getfield_a_this 41;		// reference tspSign/X509Certificate.tlv
+					aload_1;
+					getfield_a_this 41;		// reference tspSign/X509Certificate.tlv
+					getfield_s 2;		// short tspSign/TLV.ValueIndex
+					invokevirtual 57;		// Parse([BS)V
+					aload_1;
+					getfield_a_this 41;		// reference tspSign/X509Certificate.tlv
+					getfield_s 2;		// short tspSign/TLV.ValueIndex
+					getfield_a_this 39;		// reference tspSign/X509Certificate.notBefore
+					sconst_0;
+					bspush 12;
+					invokestatic 72;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					pop;
+					getfield_a_this 41;		// reference tspSign/X509Certificate.tlv
+					aload_1;
+					getfield_a_this 41;		// reference tspSign/X509Certificate.tlv
+					getfield_s 3;		// short tspSign/TLV.NextTagIndex
+					invokevirtual 57;		// Parse([BS)V
+					aload_1;
+					getfield_a_this 41;		// reference tspSign/X509Certificate.tlv
+					getfield_s 2;		// short tspSign/TLV.ValueIndex
+					getfield_a_this 40;		// reference tspSign/X509Certificate.notAfter
+					sconst_0;
+					bspush 12;
+					invokestatic 72;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					pop;
+					getfield_a_this 41;		// reference tspSign/X509Certificate.tlv
+					aload_1;
+					sload 10;
+					invokevirtual 57;		// Parse([BS)V
+					getfield_a_this 41;		// reference tspSign/X509Certificate.tlv
+					aload_1;
+					getfield_a_this 41;		// reference tspSign/X509Certificate.tlv
+					getfield_s 2;		// short tspSign/TLV.ValueIndex
+					invokevirtual 57;		// Parse([BS)V
+					getfield_a_this 41;		// reference tspSign/X509Certificate.tlv
+					aload_1;
+					getfield_a_this 41;		// reference tspSign/X509Certificate.tlv
+					getfield_s 3;		// short tspSign/TLV.NextTagIndex
+					invokevirtual 57;		// Parse([BS)V
+					getfield_a_this 41;		// reference tspSign/X509Certificate.tlv
+					aload_1;
+					getfield_a_this 41;		// reference tspSign/X509Certificate.tlv
+					getfield_s 2;		// short tspSign/TLV.ValueIndex
+					sconst_1;
+					sadd;
+					invokevirtual 57;		// Parse([BS)V
+					getfield_a_this 41;		// reference tspSign/X509Certificate.tlv
+					aload_1;
+					getfield_a_this 41;		// reference tspSign/X509Certificate.tlv
+					getfield_s 2;		// short tspSign/TLV.ValueIndex
+					invokevirtual 57;		// Parse([BS)V
+					aload_0;
+					getfield_a_this 41;		// reference tspSign/X509Certificate.tlv
+					getfield_s 2;		// short tspSign/TLV.ValueIndex
+					sconst_1;
+					sadd;
+					putfield_s 35;		// short tspSign/X509Certificate.publicKeyModulusIndex
+					aload_0;
+					getfield_a_this 41;		// reference tspSign/X509Certificate.tlv
+					getfield_s 1;		// short tspSign/TLV.Len
+					sconst_1;
+					ssub;
+					putfield_s 36;		// short tspSign/X509Certificate.publicKeyModulusLen
+					getfield_a_this 41;		// reference tspSign/X509Certificate.tlv
+					aload_1;
+					getfield_a_this 41;		// reference tspSign/X509Certificate.tlv
+					getfield_s 3;		// short tspSign/TLV.NextTagIndex
+					invokevirtual 57;		// Parse([BS)V
+					aload_0;
+					getfield_a_this 41;		// reference tspSign/X509Certificate.tlv
+					getfield_s 2;		// short tspSign/TLV.ValueIndex
+					putfield_s 37;		// short tspSign/X509Certificate.publicKeyExponentIndex
+					aload_0;
+					getfield_a_this 41;		// reference tspSign/X509Certificate.tlv
+					getfield_s 1;		// short tspSign/TLV.Len
+					putfield_s 38;		// short tspSign/X509Certificate.publicKeyExponentLen
+					getfield_a_this 41;		// reference tspSign/X509Certificate.tlv
+					aload_1;
+					getfield_s_this 33;		// short tspSign/X509Certificate.signatureIndex
+					invokevirtual 57;		// Parse([BS)V
+					aload_0;
+					getfield_a_this 41;		// reference tspSign/X509Certificate.tlv
+					getfield_s 2;		// short tspSign/TLV.ValueIndex
+					sconst_1;
+					sadd;
+					putfield_s 33;		// short tspSign/X509Certificate.signatureIndex
+					aload_0;
+					getfield_a_this 41;		// reference tspSign/X509Certificate.tlv
+					getfield_s 1;		// short tspSign/TLV.Len
+					sconst_1;
+					ssub;
+					putfield_s 34;		// short tspSign/X509Certificate.signatureLen
+					getfield_a_this 41;		// reference tspSign/X509Certificate.tlv
+					aload_1;
+					getfield_s_this 31;		// short tspSign/X509Certificate.tbsCertificateIndex
+					invokevirtual 57;		// Parse([BS)V
+					aload_0;
+					getfield_a_this 41;		// reference tspSign/X509Certificate.tlv
+					getfield_s 3;		// short tspSign/TLV.NextTagIndex
+					getfield_s_this 31;		// short tspSign/X509Certificate.tbsCertificateIndex
+					ssub;
+					putfield_s 32;		// short tspSign/X509Certificate.tbsCertificateLen
+					return;
+		}
+
+		.method public Parse([BSZ)V 2 {
+			.stack 6;
+			.locals 4;
+
+				L0:	getfield_a_this 42;		// reference tspSign/X509Certificate.tlv2
+					aload_1;
+					sload_2;
+					getstatic_a 59;		// reference tspSign/X509Certificate.pathCertificate
+					invokevirtual 48;		// Parse([BS[B)V
+					aload_0;
+					getfield_a_this 42;		// reference tspSign/X509Certificate.tlv2
+					getfield_a 4;		// reference tspSign/TLV2.Offset
+					sconst_1;
+					saload;
+					putfield_s 31;		// short tspSign/X509Certificate.tbsCertificateIndex
+					getfield_a_this 42;		// reference tspSign/X509Certificate.tlv2
+					getfield_a 4;		// reference tspSign/TLV2.Offset
+					sconst_3;
+					saload;
+					sstore 4;
+				L1:	getfield_a_this 42;		// reference tspSign/X509Certificate.tlv2
+					getfield_a 4;		// reference tspSign/TLV2.Offset
+					bspush 6;
+					saload;
+					sstore 5;
+				L2:	getfield_a_this 42;		// reference tspSign/X509Certificate.tlv2
+					getfield_a 4;		// reference tspSign/TLV2.Offset
+					bspush 10;
+					saload;
+					sstore 6;
+				L3:	aload_0;
+					getfield_a_this 42;		// reference tspSign/X509Certificate.tlv2
+					getfield_a 4;		// reference tspSign/TLV2.Offset
+					bspush 15;
+					saload;
+					putfield_s 33;		// short tspSign/X509Certificate.signatureIndex
+					getfield_a_this 42;		// reference tspSign/X509Certificate.tlv2
+					getfield_a 7;		// reference tspSign/TLV2.ValueIndex
+					bspush 12;
+					saload;
+					sconst_1;
+					sadd;
+					sstore 7;
+				L4:	aload_0;
+					getfield_a_this 42;		// reference tspSign/X509Certificate.tlv2
+					getfield_a 6;		// reference tspSign/TLV2.Len
+					sconst_3;
+					saload;
+					sconst_1;
+					ssub;
+					sconst_2;
+					invokestatic 58;		// javacard/framework/JCSystem.makeTransientByteArray(SB)[B
+					putfield_a 43;		// reference tspSign/X509Certificate.serialNumber
+					aload_1;
+					getfield_a_this 42;		// reference tspSign/X509Certificate.tlv2
+					getfield_a 7;		// reference tspSign/TLV2.ValueIndex
+					sconst_3;
+					saload;
+					sconst_1;
+					sadd;
+					getfield_a_this 43;		// reference tspSign/X509Certificate.serialNumber
+					sconst_0;
+					getfield_a_this 42;		// reference tspSign/X509Certificate.tlv2
+					getfield_a 6;		// reference tspSign/TLV2.Len
+					sconst_3;
+					saload;
+					sconst_1;
+					ssub;
+					invokestatic 72;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					pop;
+					aload_1;
+					getfield_a_this 42;		// reference tspSign/X509Certificate.tlv2
+					getfield_a 7;		// reference tspSign/TLV2.ValueIndex
+					bspush 7;
+					saload;
+					getfield_a_this 39;		// reference tspSign/X509Certificate.notBefore
+					sconst_0;
+					bspush 12;
+					invokestatic 72;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					pop;
+					aload_1;
+					getfield_a_this 42;		// reference tspSign/X509Certificate.tlv2
+					getfield_a 7;		// reference tspSign/TLV2.ValueIndex
+					bspush 8;
+					saload;
+					getfield_a_this 40;		// reference tspSign/X509Certificate.notAfter
+					sconst_0;
+					bspush 12;
+					invokestatic 72;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					pop;
+					aload_0;
+					getfield_a_this 42;		// reference tspSign/X509Certificate.tlv2
+					getfield_a 4;		// reference tspSign/TLV2.Offset
+					bspush 14;
+					saload;
+					getfield_s_this 31;		// short tspSign/X509Certificate.tbsCertificateIndex
+					ssub;
+					putfield_s 32;		// short tspSign/X509Certificate.tbsCertificateLen
+					aload_0;
+					getfield_a_this 42;		// reference tspSign/X509Certificate.tlv2
+					getfield_a 7;		// reference tspSign/TLV2.ValueIndex
+					bspush 15;
+					saload;
+					sconst_1;
+					sadd;
+					putfield_s 33;		// short tspSign/X509Certificate.signatureIndex
+					aload_0;
+					getfield_a_this 42;		// reference tspSign/X509Certificate.tlv2
+					getfield_a 6;		// reference tspSign/TLV2.Len
+					bspush 15;
+					saload;
+					sconst_1;
+					ssub;
+					putfield_s 34;		// short tspSign/X509Certificate.signatureLen
+					getfield_a_this 42;		// reference tspSign/X509Certificate.tlv2
+					aload_1;
+					sload 7;
+					getstatic_a 60;		// reference tspSign/X509Certificate.pathPublicKey
+					invokevirtual 48;		// Parse([BS[B)V
+					aload_0;
+					getfield_a_this 42;		// reference tspSign/X509Certificate.tlv2
+					getfield_a 7;		// reference tspSign/TLV2.ValueIndex
+					sconst_1;
+					saload;
+					sconst_1;
+					sadd;
+					putfield_s 35;		// short tspSign/X509Certificate.publicKeyModulusIndex
+					aload_0;
+					getfield_a_this 42;		// reference tspSign/X509Certificate.tlv2
+					getfield_a 6;		// reference tspSign/TLV2.Len
+					sconst_1;
+					saload;
+					sconst_1;
+					ssub;
+					putfield_s 36;		// short tspSign/X509Certificate.publicKeyModulusLen
+					aload_0;
+					getfield_a_this 42;		// reference tspSign/X509Certificate.tlv2
+					getfield_a 7;		// reference tspSign/TLV2.ValueIndex
+					sconst_2;
+					saload;
+					putfield_s 37;		// short tspSign/X509Certificate.publicKeyExponentIndex
+					aload_0;
+					getfield_a_this 42;		// reference tspSign/X509Certificate.tlv2
+					getfield_a 6;		// reference tspSign/TLV2.Len
+					sconst_2;
+					saload;
+					putfield_s 38;		// short tspSign/X509Certificate.publicKeyExponentLen
+					return;
+		}
+
+	}
+
+	.class public tspSign 5 extends 1.3 {		// extends javacard/framework/Applet
+
+		.fields {
+			private 1.9 pin 0;		// Ljavacard/framework/OwnerPIN;
+			private byte[] pinValue 1;		// [B
+			private 3.14 randomData 2;		// Ljavacard/security/RandomData;
+			private byte[] nonce 3;		// [B
+			private static final byte INS_VERIFY = 32;		// B
+			private static final byte INS_GET_CHALLENGE = -124;		// B
+			private static final byte INS_SIGN = -122;		// B
+			private static final byte INS_TSA_SIGN = -121;		// B
+			private static final byte INS_FILL_BUFFER = -52;		// B
+			private static final byte INS_GET_RESPONSE = -64;		// B
+			private static final byte INS_GARBAGE_COLLECTOR = 102;		// B
+			private static final short SW_PIN_INCORRECT_TRIES_LEFT = 25536;		// S
+			private static final byte KeyLen1024 = 1;		// B
+			private static final byte KeyLen2048 = 2;		// B
+			private static final byte KeyTypeRSA = 1;		// B
+			private static final byte KeyTypeRSACRT = 2;		// B
+			private static final short BIG_BUFFER_SIZE = 2200;		// S
+			private static byte[] bigBuffer = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};		// [B
+			private static byte PIN_SIZE = 4;		// B
+			private static final byte[] cardPrivateKeyModulus = {-33,110,110,68,-83,-74,-34,14,0,-128,-86,114,-64,-61,-94,33,-17,12,-25,38,-119,34,-113,-83,88,-79,-43,88,83,124,32,64,22,108,-127,22,13,-41,102,-72,13,51,43,-116,44,-3,-118,-56,45,34,-106,2,27,83,95,-73,99,-56,97,97,-66,-107,93,-88,121,89,-30,-50,-73,-108,53,-11,-70,-32,-76,9,-74,29,-83,-102,28,-10,-76,87,-104,87,-78,110,-20,-57,47,-17,99,-34,82,98,12,-36,90,82,103,-89,-48,51,17,-26,73,32,1,99,-52,-3,13,47,27,72,-5,-75,-11,107,-44,15,-106,-28,8,78,123,39};		// [B
+			private static final byte[] cardPrivateKeyExponent = {-72,-19,106,-32,-9,50,-54,-7,-91,-38,-40,-72,-33,-23,76,49,111,-19,43,8,-113,42,-122,-26,-65,-23,120,-98,-127,-126,-44,34,-105,44,-71,110,-22,-121,-27,33,-30,-14,-2,81,40,15,-74,37,86,-114,48,-64,-113,-93,99,46,-93,-84,-1,68,-22,124,48,38,44,61,50,-57,-78,117,-16,-121,69,-66,-32,113,-38,101,-115,-81,-109,-2,113,8,-83,-122,-82,91,-116,1,-22,-70,-46,98,122,-114,27,-110,-23,-95,-41,84,125,1,89,41,-26,118,-36,-25,5,-100,-56,-29,98,27,-116,121,51,56,-26,-1,-121,113,83,89,-85,25};		// [B
+			private static final byte[] cardPrivateCrtKeyP = {-11,34,-78,35,-89,-16,-34,-50,-62,127,-47,106,-109,75,88,-19,16,40,-77,-121,7,-42,-82,-106,-87,-69,84,18,97,103,99,-48,28,-114,39,95,-125,48,29,-32,-103,-66,-62,-80,31,121,-48,76,-26,39,-39,-41,-106,43,-15,-35,-56,-29,74,68,61,90,118,-11};		// [B
+			private static final byte[] cardPrivateCrtKeyQ = {-23,85,122,-45,-123,47,7,65,56,3,-7,-24,-81,125,59,-89,13,-108,31,-127,76,58,-35,104,118,-17,96,-68,-56,-55,62,-69,-105,-88,-80,-106,125,78,-97,3,-13,63,78,-8,71,115,47,112,21,52,-22,-74,-123,60,-118,58,-24,-105,89,-121,42,-38,-128,43};		// [B
+			private static final byte[] cardPrivateCrtKeyDP = {99,14,-79,51,-83,98,-83,118,-103,-84,51,0,-63,34,-70,125,-103,-127,9,2,-16,-52,-12,-30,23,22,-122,-29,-94,-114,-72,11,-39,-18,43,-60,-15,-21,88,-73,113,9,95,-4,-15,-53,52,-68,78,105,30,35,123,32,-88,-19,57,-121,119,116,89,-30,-101,-99};		// [B
+			private static final byte[] cardPrivateCrtKeyDQ = {-77,94,-82,-55,35,-68,-1,74,-73,-112,-10,-16,84,-41,100,-96,10,-28,47,67,-22,33,-26,74,-124,3,-120,-50,23,91,-3,9,-96,-112,97,15,-114,-52,125,-103,63,-55,15,31,-11,109,42,-82,114,-34,-10,-1,-48,116,-75,-98,-117,102,-83,-64,38,-59,73,121};		// [B
+			private static final byte[] cardPrivateCrtKeyPQ = {20,-31,-2,71,-108,7,39,0,29,81,65,-119,47,-113,-5,-10,-75,31,-93,43,-42,-34,73,-9,-110,127,-23,-52,45,115,11,72,-87,39,37,117,-124,30,97,39,106,-15,42,-73,60,-64,-60,52,15,-68,-44,13,-114,-116,55,13,-101,126,-21,33,-40,-90,81,66};		// [B
+			private static final byte[] caPublicKeyModulus = {-80,2,-52,-23,42,-63,-34,5,107,110,91,-89,40,121,-102,-92,117,-24,-49,28,-86,-30,-22,-35,38,-114,111,83,40,26,8,68,-9,-31,56,110,-117,117,-20,-42,-99,58,-106,-98,42,113,-45,-60,105,0,-113,97,-12,-87,-40,-15,19,16,104,-21,-125,55,114,-119,-76,-122,-53,54,-19,17,26,115,19,45,-56,111,-79,-86,48,-45,92,-31,58,-36,-31,16,102,-39,123,-64,-71,-109,-61,-33,-105,-19,71,-105,-68,47,-45,36,124,108,55,1,124,115,-70,46,85,30,-68,125,76,-100,-7,-53,30,-42,-117,27,35,104,-84,-101,-2,-125};		// [B
+			private static final byte[] caPublicKeyExponent = {1,0,1};		// [B
+			private static final byte[] cardCertificate = {48,-126,2,57,48,-126,1,-94,-96,3,2,1,2,2,9,0,-40,-86,59,91,16,-42,-63,-40,48,13,6,9,42,-122,72,-122,-9,13,1,1,5,5,0,48,80,49,11,48,9,6,3,85,4,6,19,2,85,83,49,16,48,14,6,3,85,4,8,19,7,70,108,111,114,105,100,97,49,16,48,14,6,3,85,4,7,19,7,79,114,108,97,110,100,111,49,12,48,10,6,3,85,4,10,19,3,85,67,70,49,15,48,13,6,3,85,4,3,19,6,82,111,111,116,67,65,48,30,23,13,49,55,48,55,50,48,50,51,52,56,49,54,90,23,13,49,56,48,50,48,53,50,51,52,56,49,54,90,48,81,49,11,48,9,6,3,85,4,6,19,2,85,83,49,16,48,14,6,3,85,4,8,19,7,70,108,111,114,105,100,97,49,16,48,14,6,3,85,4,7,19,7,79,114,108,97,110,100,111,49,12,48,10,6,3,85,4,10,19,3,85,67,70,49,16,48,14,6,3,85,4,3,19,7,72,111,115,115,101,105,110,48,-127,-97,48,13,6,9,42,-122,72,-122,-9,13,1,1,1,5,0,3,-127,-115,0,48,-127,-119,2,-127,-127,0,-33,110,110,68,-83,-74,-34,14,0,-128,-86,114,-64,-61,-94,33,-17,12,-25,38,-119,34,-113,-83,88,-79,-43,88,83,124,32,64,22,108,-127,22,13,-41,102,-72,13,51,43,-116,44,-3,-118,-56,45,34,-106,2,27,83,95,-73,99,-56,97,97,-66,-107,93,-88,121,89,-30,-50,-73,-108,53,-11,-70,-32,-76,9,-74,29,-83,-102,28,-10,-76,87,-104,87,-78,110,-20,-57,47,-17,99,-34,82,98,12,-36,90,82,103,-89,-48,51,17,-26,73,32,1,99,-52,-3,13,47,27,72,-5,-75,-11,107,-44,15,-106,-28,8,78,123,39,2,3,1,0,1,-93,26,48,24,48,22,6,3,85,29,37,1,1,-1,4,12,48,10,6,8,43,6,1,5,5,7,3,8,48,13,6,9,42,-122,72,-122,-9,13,1,1,5,5,0,3,-127,-127,0,-128,-93,15,35,-44,-89,16,-37,-3,22,121,-43,-54,-39,-89,-97,-69,-97,37,-15,-21,-108,36,-2,-15,-71,-73,-57,-101,-64,44,-42,67,104,-48,-67,-1,-55,-26,-74,-122,-47,-69,-111,-98,-118,-68,-21,11,-77,55,-16,31,-79,23,-36,99,-79,14,-26,-114,-48,11,-18,5,-44,95,26,-18,27,51,94,-17,-56,119,-6,9,-95,89,64,-14,75,-64,38,119,33,-111,-87,-43,9,-21,-108,-85,-10,-63,-61,-21,-106,116,-104,-119,-95,25,72,122,48,-80,12,-119,42,-49,-52,89,86,56,-9,98,-72,-116,112,-67,38,-80,29,-66,127,127,47};		// [B
+			private static final byte[] tsrResponseTemplate = {48,-126,4,103,48,21,2,1,0,48,16,12,14,79,112,101,114,97,116,105,111,110,32,79,107,97,121,48,-126,4,76,6,9,42,-122,72,-122,-9,13,1,7,2,-96,-126,4,61,48,-126,4,57,2,1,3,49,11,48,9,6,5,43,14,3,2,26,5,0,48,80,6,11,42,-122,72,-122,-9,13,1,9,16,1,4,-96,65,4,63,48,61,2,1,1,6,1,42,48,33,48,9,6,5,43,14,3,2,26,5,0,4,20,-115,-43,-58,7,-46,-31,-71,-64,-19,-11,83,-21,111,-125,91,-49,-52,101,38,19,2,1,23,24,15,50,48,49,55,48,55,50,48,49,51,50,53,53,53,90,-96,-126,2,61,48,-126,2,57,48,-126,1,-94,-96,3,2,1,2,2,9,0,-40,-86,59,91,16,-42,-63,-40,48,13,6,9,42,-122,72,-122,-9,13,1,1,5,5,0,48,80,49,11,48,9,6,3,85,4,6,19,2,85,83,49,16,48,14,6,3,85,4,8,19,7,70,108,111,114,105,100,97,49,16,48,14,6,3,85,4,7,19,7,79,114,108,97,110,100,111,49,12,48,10,6,3,85,4,10,19,3,85,67,70,49,15,48,13,6,3,85,4,3,19,6,82,111,111,116,67,65,48,30,23,13,49,55,48,55,50,48,50,51,52,56,49,54,90,23,13,49,56,48,50,48,53,50,51,52,56,49,54,90,48,81,49,11,48,9,6,3,85,4,6,19,2,85,83,49,16,48,14,6,3,85,4,8,19,7,70,108,111,114,105,100,97,49,16,48,14,6,3,85,4,7,19,7,79,114,108,97,110,100,111,49,12,48,10,6,3,85,4,10,19,3,85,67,70,49,16,48,14,6,3,85,4,3,19,7,72,111,115,115,101,105,110,48,-127,-97,48,13,6,9,42,-122,72,-122,-9,13,1,1,1,5,0,3,-127,-115,0,48,-127,-119,2,-127,-127,0,-33,110,110,68,-83,-74,-34,14,0,-128,-86,114,-64,-61,-94,33,-17,12,-25,38,-119,34,-113,-83,88,-79,-43,88,83,124,32,64,22,108,-127,22,13,-41,102,-72,13,51,43,-116,44,-3,-118,-56,45,34,-106,2,27,83,95,-73,99,-56,97,97,-66,-107,93,-88,121,89,-30,-50,-73,-108,53,-11,-70,-32,-76,9,-74,29,-83,-102,28,-10,-76,87,-104,87,-78,110,-20,-57,47,-17,99,-34,82,98,12,-36,90,82,103,-89,-48,51,17,-26,73,32,1,99,-52,-3,13,47,27,72,-5,-75,-11,107,-44,15,-106,-28,8,78,123,39,2,3,1,0,1,-93,26,48,24,48,22,6,3,85,29,37,1,1,-1,4,12,48,10,6,8,43,6,1,5,5,7,3,8,48,13,6,9,42,-122,72,-122,-9,13,1,1,5,5,0,3,-127,-127,0,-128,-93,15,35,-44,-89,16,-37,-3,22,121,-43,-54,-39,-89,-97,-69,-97,37,-15,-21,-108,36,-2,-15,-71,-73,-57,-101,-64,44,-42,67,104,-48,-67,-1,-55,-26,-74,-122,-47,-69,-111,-98,-118,-68,-21,11,-77,55,-16,31,-79,23,-36,99,-79,14,-26,-114,-48,11,-18,5,-44,95,26,-18,27,51,94,-17,-56,119,-6,9,-95,89,64,-14,75,-64,38,119,33,-111,-87,-43,9,-21,-108,-85,-10,-63,-61,-21,-106,116,-104,-119,-95,25,72,122,48,-80,12,-119,42,-49,-52,89,86,56,-9,98,-72,-116,112,-67,38,-80,29,-66,127,127,47,49,-126,1,-110,48,-126,1,-114,2,1,1,48,93,48,80,49,11,48,9,6,3,85,4,6,19,2,85,83,49,16,48,14,6,3,85,4,8,19,7,70,108,111,114,105,100,97,49,16,48,14,6,3,85,4,7,19,7,79,114,108,97,110,100,111,49,12,48,10,6,3,85,4,10,19,3,85,67,70,49,15,48,13,6,3,85,4,3,19,6,82,111,111,116,67,65,2,9,0,-40,-86,59,91,16,-42,-63,-40,48,9,6,5,43,14,3,2,26,5,0,-96,-127,-116,48,26,6,9,42,-122,72,-122,-9,13,1,9,3,49,13,6,11,42,-122,72,-122,-9,13,1,9,16,1,4,48,28,6,9,42,-122,72,-122,-9,13,1,9,5,49,15,23,13,49,55,48,55,50,49,48,48,50,49,49,54,90,48,35,6,9,42,-122,72,-122,-9,13,1,9,4,49,22,4,20,41,-15,-101,73,119,70,-26,-91,-2,-100,-54,-52,7,0,24,-81,5,-21,-25,-50,48,43,6,11,42,-122,72,-122,-9,13,1,9,16,2,12,49,28,48,26,48,24,48,22,4,20,55,117,92,79,67,99,-101,-116,-56,15,27,-34,-47,19,27,29,-72,-68,-125,-80,48,13,6,9,42,-122,72,-122,-9,13,1,1,1,5,0,4,-127,-128,-111,18,-58,47,98,65,-122,-70,-63,-36,26,56,3,-11,-18,99,-70,59,34,20,-49,-13,-116,3,82,-34,101,42,41,45,40,25,-97,96,45,56,94,84,107,-60,-58,-92,-123,121,43,85,42,-1,55,72,-89,55,-27,-4,-70,87,-62,-41,107,44,-41,-77,-84,-89,-117,123,-119,-84,7,104,-2,112,-78,-47,7,-117,120,-26,83,126,-53,-71,-1,6,-74,-20,12,-62,-97,-95,-118,29,7,-28,-67,-93,126,-118,26,-65,-99,106,-16,93,-28,-54,95,-113,78,59,-81,33,-75,18,-86,-42,-81,79,-16,65,71,-24,-79,84,-36,109,-122,-46};		// [B
+			private static final byte[] cardPrivateKeyModulus2 = {-94,125,-121,66,100,108,-88,85,-107,-23,-39,64,-105,74,-50,-28,89,-54,-49,106,-121,40,106,-79,67,7,-45,-117,-55,-42,-51,-23,29,92,50,-51,-17,84,6,-41,-28,-89,19,-70,36,-116,58,36,91,-25,-127,-109,86,26,90,74,-13,113,107,-39,-4,-117,8,87,114,-5,48,6,114,56,80,-38,13,98,-121,-28,-47,-12,-98,-123,66,-125,-63,106,75,-54,-18,35,-76,-30,97,-121,100,63,-7,-81,36,-2,-39,39,-67,-96,114,48,-101,19,0,-127,-49,-122,-107,-103,-9,-111,-41,18,97,-124,-42,78,39,-81,-69,-20,-77,11,117,-66,-32,-9,86,-67,-60,117,54,96,11,-78,120,58,-90,47,-98,-51,38,39,-76,-96,52,106,121,-20,-24,4,-115,-87,-59,35,85,-14,22,105,72,-97,15,-1,24,74,103,-98,-27,-78,51,19,-94,-64,-16,-31,-126,-55,51,106,102,-40,119,-92,-106,-102,121,2,-22,-9,98,28,76,-85,-123,111,78,-82,-50,15,103,-26,104,71,35,82,-2,-107,40,-40,99,-97,83,-120,-22,47,91,-82,43,-19,52,-58,-116,-24,-81,-80,93,-117,88,93,-72,-1,117,113,-78,-28,-106,-90,56,50,-118,53,-82,16,-10,-59,-116,-39,-119,-76,-47,-97,-37,-97};		// [B
+			private static final byte[] cardPrivateKeyExponent2 = {-112,-109,13,-16,-11,-73,116,3,74,114,-103,-7,-115,99,99,55,-21,-24,-74,-87,-6,-3,-20,8,50,50,-39,119,-116,43,-46,99,-14,-38,-96,-35,120,111,19,-13,-83,-97,54,-65,45,91,-109,51,-36,-115,-36,77,-126,-109,-55,-8,-36,39,-13,-91,45,-67,106,-69,-100,51,-128,-92,-117,-90,45,-46,5,-116,-64,-118,-56,-128,85,55,14,90,122,-110,32,67,-69,-91,11,-127,76,-13,-111,48,22,-15,78,2,110,-90,-100,99,16,-106,-52,-77,-104,-124,-25,103,-64,-34,16,87,-77,-69,-56,6,-48,67,19,-82,-103,-113,94,50,-7,28,100,58,-70,6,24,-67,-44,-39,38,101,-76,-63,17,96,-124,110,-19,109,116,49,126,-59,21,-59,84,-110,4,0,109,-21,73,-63,100,-41,-83,55,111,4,69,12,-68,95,-42,21,33,26,-119,94,-125,-76,86,-2,91,-10,-123,-128,-112,70,71,46,110,59,88,-20,125,19,28,64,-100,98,96,-50,-104,86,-6,-125,97,-10,-89,114,-72,-9,-6,71,-20,39,32,-17,-96,-33,51,-23,-20,-51,-104,56,-15,83,67,77,31,-35,-37,74,-13,-56,-2,123,119,-33,-28,-52,-28,-5,47,23,82,-126,-107,-49,-109,-23,-56,-50,21,-63,60,-111};		// [B
+			private static final byte[] cardPrivateCrtKeyP2 = {-41,-47,-119,-117,-95,-1,8,83,-37,15,60,99,38,-61,45,-1,-34,125,-87,82,27,55,-93,77,-6,-90,-19,-12,-67,-99,-82,26,-76,72,-22,-100,-53,22,80,12,-92,-108,-89,-33,20,6,26,-48,47,123,-82,49,-21,-127,-39,-90,101,78,118,99,79,-8,60,66,11,119,22,-11,-103,94,-2,78,35,-42,-37,126,-109,24,4,-8,96,108,-44,94,-109,-51,115,-118,93,-62,-14,96,-106,81,-128,16,-49,30,93,109,-123,127,-53,33,-3,-1,23,67,-71,34,-50,105,65,81,13,46,19,10,-122,-60,10,73,-82,21,113,-49,49,-121};		// [B
+			private static final byte[] cardPrivateCrtKeyQ2 = {-64,-66,60,0,-113,-104,71,-32,36,58,30,6,49,32,17,-110,42,114,7,-43,37,-85,50,-5,42,55,-83,40,44,65,-82,-54,-31,-78,-75,13,-51,36,-1,-92,78,-71,-2,-107,80,-125,-48,-59,38,-79,-40,54,-41,37,50,74,104,99,-11,32,93,67,-58,-23,-101,-38,-28,114,-62,-6,-45,-58,9,3,64,94,-123,-8,119,-122,-15,-64,-17,30,86,-57,-60,-86,-125,-5,85,34,57,30,-14,-81,76,104,33,110,87,-128,-59,78,116,93,-19,104,-41,-54,-39,119,103,107,-111,-2,-50,11,111,-59,-62,-121,-35,79,25,-74,-21,41};		// [B
+			private static final byte[] cardPrivateCrtKeyDP2 = {-57,35,-103,127,54,99,85,19,-53,54,43,-54,113,-95,-9,119,-7,-100,-119,-8,49,21,13,-94,-114,126,41,99,-126,-13,84,11,95,-1,72,60,-107,72,105,100,-63,24,74,46,21,19,-20,-7,-36,86,-117,77,-108,-71,-92,83,93,119,32,-42,82,-100,3,62,13,-58,61,113,49,-85,-19,-117,-68,-106,44,-62,-122,-121,-53,78,67,-21,39,-86,125,71,62,45,-106,-122,-93,-113,108,36,-105,-66,-22,-34,97,-25,5,31,-2,23,-57,126,-15,-64,-109,-68,2,42,45,18,-44,-50,-122,-45,87,-74,-36,-89,79,-14,-119,-87,93,81};		// [B
+			private static final byte[] cardPrivateCrtKeyDQ2 = {27,-29,-86,-12,-3,-46,48,28,75,-63,-87,20,-122,73,56,-95,-88,-56,-91,63,127,90,-35,94,-96,-122,59,-27,3,58,97,-37,115,123,19,93,-78,-32,118,-87,68,-58,-1,2,-122,10,-4,-53,122,68,-29,-97,83,-44,75,9,-97,63,79,121,-26,100,-25,68,104,75,-19,32,121,-4,39,102,-111,105,74,8,35,100,-121,-113,28,46,41,-85,127,45,26,-44,-3,-110,1,-120,-103,49,84,54,111,92,-27,-15,124,113,-30,-102,-18,-107,-92,-61,-75,-19,-31,55,-72,-36,68,-36,-44,-35,-84,-57,-75,-43,72,-3,-88,31,-30,-71};		// [B
+			private static final byte[] cardPrivateCrtKeyPQ2 = {14,-79,39,-78,-108,35,0,1,-127,81,54,-16,-105,-80,-73,-20,95,106,-75,6,-94,57,99,106,68,-98,32,77,-38,119,30,-90,-81,66,38,28,-13,-85,-109,117,90,63,-81,-91,-1,-83,-46,126,59,-15,-49,-35,9,3,66,27,-69,-56,-117,30,-83,-98,103,-69,94,41,-48,24,38,78,-68,-90,84,-79,37,-58,-128,104,3,54,31,79,72,80,-86,93,-38,54,-127,123,88,-44,-106,-123,96,-22,-101,100,70,-64,-14,-61,66,49,48,56,-98,-13,52,2,101,19,-88,-35,-27,121,-65,76,82,56,4,86,47,46,55,101,-83,12};		// [B
+			private static final byte[] caPublicKeyModulus2 = {-46,-97,60,-99,34,-61,115,18,-73,73,-104,-40,93,-112,-86,99,104,18,-59,-19,112,-100,-46,13,51,-88,82,-74,87,75,70,-42,-123,-96,94,125,-68,-49,21,-93,123,104,43,76,84,-2,30,8,62,-15,-42,-128,-64,-115,-75,51,91,-122,-115,113,-48,-50,26,46,8,-16,7,-115,64,-91,-84,-69,40,-106,-1,-125,-20,-110,-26,-50,-41,-102,105,2,-33,-92,-74,37,-97,-92,-39,-93,81,-125,-106,101,103,-113,108,77,109,-128,-9,-123,122,-72,84,-14,20,78,45,-59,-120,101,-4,-57,-98,65,100,-111,-62,83,-122,-102,-44,9,-94,22,-18,-27,-66,-19,-110,-83,-86,94,27,-124,-29,99,122,-42,53,91,-40,63,108,32,-22,33,36,20,-96,-31,57,60,95,27,38,-6,3,12,4,-114,-28,-92,-125,-98,17,-8,79,14,39,96,84,66,8,-42,-66,72,-90,35,-54,94,121,-119,101,45,-83,31,124,76,90,67,87,28,126,-101,19,-96,-29,-80,-45,40,-33,123,55,54,106,-28,-87,-13,105,-66,-67,7,-44,27,-54,-83,-93,27,-86,16,-85,102,58,-65,-52,35,36,92,-69,106,19,-39,12,60,-51,-105,89,39,94,-15,54,-59,74,-26,-29,73,-36,-30,33,-19,-89,93};		// [B
+			private static final byte[] caPublicKeyExponent2 = {1,0,1};		// [B
+			private static final byte[] cardCertificate2 = {48,-126,3,63,48,-126,2,39,-96,3,2,1,2,2,9,0,-39,-83,52,-68,110,-122,-14,71,48,13,6,9,42,-122,72,-122,-9,13,1,1,5,5,0,48,81,49,11,48,9,6,3,85,4,6,19,2,85,83,49,16,48,14,6,3,85,4,8,19,7,70,108,111,114,105,100,97,49,16,48,14,6,3,85,4,7,19,7,79,114,108,97,110,100,111,49,12,48,10,6,3,85,4,10,19,3,85,67,70,49,16,48,14,6,3,85,4,3,19,7,82,111,111,116,67,65,50,48,30,23,13,49,55,48,55,50,49,50,50,53,51,50,48,90,23,13,49,56,48,50,48,54,50,50,53,51,50,48,90,48,81,49,11,48,9,6,3,85,4,6,19,2,85,83,49,16,48,14,6,3,85,4,8,19,7,70,108,111,114,105,100,97,49,16,48,14,6,3,85,4,7,19,7,79,114,108,97,110,100,111,49,12,48,10,6,3,85,4,10,19,3,85,67,70,49,16,48,14,6,3,85,4,3,19,7,72,111,115,115,101,105,110,48,-126,1,34,48,13,6,9,42,-122,72,-122,-9,13,1,1,1,5,0,3,-126,1,15,0,48,-126,1,10,2,-126,1,1,0,-94,125,-121,66,100,108,-88,85,-107,-23,-39,64,-105,74,-50,-28,89,-54,-49,106,-121,40,106,-79,67,7,-45,-117,-55,-42,-51,-23,29,92,50,-51,-17,84,6,-41,-28,-89,19,-70,36,-116,58,36,91,-25,-127,-109,86,26,90,74,-13,113,107,-39,-4,-117,8,87,114,-5,48,6,114,56,80,-38,13,98,-121,-28,-47,-12,-98,-123,66,-125,-63,106,75,-54,-18,35,-76,-30,97,-121,100,63,-7,-81,36,-2,-39,39,-67,-96,114,48,-101,19,0,-127,-49,-122,-107,-103,-9,-111,-41,18,97,-124,-42,78,39,-81,-69,-20,-77,11,117,-66,-32,-9,86,-67,-60,117,54,96,11,-78,120,58,-90,47,-98,-51,38,39,-76,-96,52,106,121,-20,-24,4,-115,-87,-59,35,85,-14,22,105,72,-97,15,-1,24,74,103,-98,-27,-78,51,19,-94,-64,-16,-31,-126,-55,51,106,102,-40,119,-92,-106,-102,121,2,-22,-9,98,28,76,-85,-123,111,78,-82,-50,15,103,-26,104,71,35,82,-2,-107,40,-40,99,-97,83,-120,-22,47,91,-82,43,-19,52,-58,-116,-24,-81,-80,93,-117,88,93,-72,-1,117,113,-78,-28,-106,-90,56,50,-118,53,-82,16,-10,-59,-116,-39,-119,-76,-47,-97,-37,-97,2,3,1,0,1,-93,26,48,24,48,22,6,3,85,29,37,1,1,-1,4,12,48,10,6,8,43,6,1,5,5,7,3,8,48,13,6,9,42,-122,72,-122,-9,13,1,1,5,5,0,3,-126,1,1,0,-85,97,12,-55,57,55,-123,80,12,43,74,-97,-9,-37,16,17,44,28,36,87,102,66,83,-100,-81,-43,-72,-91,107,99,88,-40,64,112,62,46,84,-69,-123,96,-90,-23,5,107,-112,-29,92,-90,112,-59,-61,-51,-117,-110,39,-114,83,-49,64,22,-45,-47,-112,-46,6,112,-34,-76,-102,59,-57,-74,-114,-118,26,124,-28,-122,-10,-21,-103,122,-106,-96,30,-41,102,-65,50,22,-88,-93,-19,121,-39,-14,10,-116,-78,-98,-71,-72,61,9,54,59,-36,-64,-66,76,38,1,-7,38,59,127,78,60,90,125,7,43,-108,76,-76,-102,114,-16,40,86,77,116,21,-40,104,35,-96,122,-77,85,-88,-125,-70,-80,-32,-33,90,-115,-107,-49,-62,45,126,15,9,-96,-81,-69,-29,106,-41,-107,-127,112,-102,-71,43,106,118,86,-111,-33,118,98,3,-108,0,-10,42,-28,87,-35,-43,17,53,-44,8,102,5,-55,-86,109,16,-115,-1,22,-31,-33,-12,-9,118,118,100,25,-74,-62,-81,103,36,122,-85,102,40,-74,-9,-34,92,114,73,-118,-55,54,5,-36,57,45,32,-109,60,-100,29,-51,38,17,-77,82,4,103,-28,-59,30,-59,-9,107,-102,86,-128,-85,88,-14,35,-66,120,-31,-28,-82};		// [B
+			private static final byte[] tsrResponseTemplate2 = {48,-126,5,-17,48,21,2,1,0,48,16,12,14,79,112,101,114,97,116,105,111,110,32,79,107,97,121,48,-126,5,-44,6,9,42,-122,72,-122,-9,13,1,7,2,-96,-126,5,-59,48,-126,5,-63,2,1,3,49,11,48,9,6,5,43,14,3,2,26,5,0,48,80,6,11,42,-122,72,-122,-9,13,1,9,16,1,4,-96,65,4,63,48,61,2,1,1,6,1,42,48,33,48,9,6,5,43,14,3,2,26,5,0,4,20,-115,-43,-58,7,-46,-31,-71,-64,-19,-11,83,-21,111,-125,91,-49,-52,101,38,19,2,1,23,24,15,50,48,49,55,48,55,50,48,49,51,50,53,53,53,90,-96,-126,3,67,48,-126,3,63,48,-126,2,39,-96,3,2,1,2,2,9,0,-39,-83,52,-68,110,-122,-14,71,48,13,6,9,42,-122,72,-122,-9,13,1,1,5,5,0,48,81,49,11,48,9,6,3,85,4,6,19,2,85,83,49,16,48,14,6,3,85,4,8,19,7,70,108,111,114,105,100,97,49,16,48,14,6,3,85,4,7,19,7,79,114,108,97,110,100,111,49,12,48,10,6,3,85,4,10,19,3,85,67,70,49,16,48,14,6,3,85,4,3,19,7,82,111,111,116,67,65,50,48,30,23,13,49,55,48,55,50,49,50,50,53,51,50,48,90,23,13,49,56,48,50,48,54,50,50,53,51,50,48,90,48,81,49,11,48,9,6,3,85,4,6,19,2,85,83,49,16,48,14,6,3,85,4,8,19,7,70,108,111,114,105,100,97,49,16,48,14,6,3,85,4,7,19,7,79,114,108,97,110,100,111,49,12,48,10,6,3,85,4,10,19,3,85,67,70,49,16,48,14,6,3,85,4,3,19,7,72,111,115,115,101,105,110,48,-126,1,34,48,13,6,9,42,-122,72,-122,-9,13,1,1,1,5,0,3,-126,1,15,0,48,-126,1,10,2,-126,1,1,0,-94,125,-121,66,100,108,-88,85,-107,-23,-39,64,-105,74,-50,-28,89,-54,-49,106,-121,40,106,-79,67,7,-45,-117,-55,-42,-51,-23,29,92,50,-51,-17,84,6,-41,-28,-89,19,-70,36,-116,58,36,91,-25,-127,-109,86,26,90,74,-13,113,107,-39,-4,-117,8,87,114,-5,48,6,114,56,80,-38,13,98,-121,-28,-47,-12,-98,-123,66,-125,-63,106,75,-54,-18,35,-76,-30,97,-121,100,63,-7,-81,36,-2,-39,39,-67,-96,114,48,-101,19,0,-127,-49,-122,-107,-103,-9,-111,-41,18,97,-124,-42,78,39,-81,-69,-20,-77,11,117,-66,-32,-9,86,-67,-60,117,54,96,11,-78,120,58,-90,47,-98,-51,38,39,-76,-96,52,106,121,-20,-24,4,-115,-87,-59,35,85,-14,22,105,72,-97,15,-1,24,74,103,-98,-27,-78,51,19,-94,-64,-16,-31,-126,-55,51,106,102,-40,119,-92,-106,-102,121,2,-22,-9,98,28,76,-85,-123,111,78,-82,-50,15,103,-26,104,71,35,82,-2,-107,40,-40,99,-97,83,-120,-22,47,91,-82,43,-19,52,-58,-116,-24,-81,-80,93,-117,88,93,-72,-1,117,113,-78,-28,-106,-90,56,50,-118,53,-82,16,-10,-59,-116,-39,-119,-76,-47,-97,-37,-97,2,3,1,0,1,-93,26,48,24,48,22,6,3,85,29,37,1,1,-1,4,12,48,10,6,8,43,6,1,5,5,7,3,8,48,13,6,9,42,-122,72,-122,-9,13,1,1,5,5,0,3,-126,1,1,0,-85,97,12,-55,57,55,-123,80,12,43,74,-97,-9,-37,16,17,44,28,36,87,102,66,83,-100,-81,-43,-72,-91,107,99,88,-40,64,112,62,46,84,-69,-123,96,-90,-23,5,107,-112,-29,92,-90,112,-59,-61,-51,-117,-110,39,-114,83,-49,64,22,-45,-47,-112,-46,6,112,-34,-76,-102,59,-57,-74,-114,-118,26,124,-28,-122,-10,-21,-103,122,-106,-96,30,-41,102,-65,50,22,-88,-93,-19,121,-39,-14,10,-116,-78,-98,-71,-72,61,9,54,59,-36,-64,-66,76,38,1,-7,38,59,127,78,60,90,125,7,43,-108,76,-76,-102,114,-16,40,86,77,116,21,-40,104,35,-96,122,-77,85,-88,-125,-70,-80,-32,-33,90,-115,-107,-49,-62,45,126,15,9,-96,-81,-69,-29,106,-41,-107,-127,112,-102,-71,43,106,118,86,-111,-33,118,98,3,-108,0,-10,42,-28,87,-35,-43,17,53,-44,8,102,5,-55,-86,109,16,-115,-1,22,-31,-33,-12,-9,118,118,100,25,-74,-62,-81,103,36,122,-85,102,40,-74,-9,-34,92,114,73,-118,-55,54,5,-36,57,45,32,-109,60,-100,29,-51,38,17,-77,82,4,103,-28,-59,30,-59,-9,107,-102,86,-128,-85,88,-14,35,-66,120,-31,-28,-82,49,-126,2,20,48,-126,2,16,2,1,1,48,94,48,81,49,11,48,9,6,3,85,4,6,19,2,85,83,49,16,48,14,6,3,85,4,8,19,7,70,108,111,114,105,100,97,49,16,48,14,6,3,85,4,7,19,7,79,114,108,97,110,100,111,49,12,48,10,6,3,85,4,10,19,3,85,67,70,49,16,48,14,6,3,85,4,3,19,7,82,111,111,116,67,65,50,2,9,0,-39,-83,52,-68,110,-122,-14,71,48,9,6,5,43,14,3,2,26,5,0,-96,-127,-116,48,26,6,9,42,-122,72,-122,-9,13,1,9,3,49,13,6,11,42,-122,72,-122,-9,13,1,9,16,1,4,48,28,6,9,42,-122,72,-122,-9,13,1,9,5,49,15,23,13,49,55,48,55,50,50,49,52,49,52,52,57,90,48,35,6,9,42,-122,72,-122,-9,13,1,9,4,49,22,4,20,41,-15,-101,73,119,70,-26,-91,-2,-100,-54,-52,7,0,24,-81,5,-21,-25,-50,48,43,6,11,42,-122,72,-122,-9,13,1,9,16,2,12,49,28,48,26,48,24,48,22,4,20,-59,-127,-57,31,-98,-106,70,56,-56,-115,-78,-55,-96,-43,-55,-69,-96,28,70,-65,48,13,6,9,42,-122,72,-122,-9,13,1,1,1,5,0,4,-126,1,0,23,-118,-102,-118,-77,65,117,55,47,-99,69,73,34,123,-11,-68,-99,90,-119,112,-91,-58,69,5,55,-79,46,110,-108,11,-48,75,-2,-52,59,20,-89,-75,-80,65,-74,-15,90,25,21,-14,120,16,68,-17,104,55,-68,-40,112,-30,48,29,32,124,-110,-98,-48,-43,-94,35,125,-28,7,-37,55,-70,-5,-50,-54,45,-52,-9,29,-22,14,-90,-70,-1,-106,-42,77,107,126,112,-12,46,-96,24,-36,58,89,-11,-111,-15,34,124,-23,-123,-102,-69,-100,96,-88,27,74,-96,-6,117,25,-115,42,-116,-120,114,-21,-60,-79,78,74,19,-59,-11,18,20,37,35,82,60,125,-98,79,108,-127,-3,81,-21,-34,-51,101,83,-26,-76,-36,122,116,12,-82,-99,4,73,-37,-32,21,87,-113,-18,89,107,45,-29,104,28,56,-113,-13,108,38,-95,-55,81,-48,-124,65,-24,-69,-77,124,30,-27,-116,-48,-36,-103,59,121,-122,-72,78,-52,-33,66,-75,15,-67,-24,-97,63,-78,-36,112,-5,5,-106,16,-30,-54,126,-104,107,81,-4,-121,88,78,1,27,-96,9,50,-29,-121,99,-80,68,92,74,-67,19,-41,121,87,-13,94,20,17,68,-108,-100,-87,27,69,-15,-19,17,-65,-28,102,-27,25,90};		// [B
+			private static 3.8 cardPrivateKey;		// Ljavacard/security/RSAPrivateKey;
+			private static 3.7 cardPrivateCrtKey;		// Ljavacard/security/RSAPrivateCrtKey;
+			private static 3.9 caPublicKey;		// Ljavacard/security/RSAPublicKey;
+			private static 3.9 tsaPublicKey;		// Ljavacard/security/RSAPublicKey;
+			private static 3.8 cardPrivateKey2;		// Ljavacard/security/RSAPrivateKey;
+			private static 3.7 cardPrivateCrtKey2;		// Ljavacard/security/RSAPrivateCrtKey;
+			private static 3.9 caPublicKey2;		// Ljavacard/security/RSAPublicKey;
+			private static 3.9 tsaPublicKey2;		// Ljavacard/security/RSAPublicKey;
+			private static TimeStampResp timeStampResp;		// LtspSign/TimeStampResp;
+			private static X509Certificate x509certificate;		// LtspSign/X509Certificate;
+			private static X509CRL x509crl;		// LtspSign/X509CRL;
+			private static 3.15 signature;		// Ljavacard/security/Signature;
+		}
+
+		.publicMethodTable 7 {
+			equals(Ljava/lang/Object;)Z;
+			register()V;
+			register([BSB)V;
+			selectingApplet()Z;
+			deselect()V;
+			getShareableInterfaceObject(Ljavacard/framework/AID;B)Ljavacard/framework/Shareable;;
+			select()Z;
+			process(Ljavacard/framework/APDU;)V;
+		}
+
+		.packageMethodTable 0 {
+			readExtendedLengthData(Ljavacard/framework/APDU;[BS)S;
+			processFillBuffer(Ljavacard/framework/APDU;)V;
+		}
+
+		.implementedInterfaceInfoTable { 
+			.interface 1.0 { 		// javacard/framework/ISO7816
+			}
+
+			.interface 2.0 { 		// javacardx/apdu/ExtendedLength
+			}
+
+		}
+
+		.method public static install([BSB)V 0 {
+			.stack 5;
+			.locals 0;
+
+				L0:	new 61;		// tspSign/tspSign
+					dup;
+					invokespecial 62;		// tspSign/tspSign.<init>()V
+					aload_0;
+					sload_1;
+					sconst_1;
+					sadd;
+					aload_0;
+					sload_1;
+					baload;
+					invokevirtual 63;		// register([BSB)V
+					return;
+		}
+
+		.method private <init>()V {
+			.stack 5;
+			.locals 1;
+
+				L0:	aload_0;
+					invokespecial 64;		// javacard/framework/Applet.<init>()V
+					aload_0;
+					aconst_null;
+					putfield_a 44;		// reference tspSign/tspSign.pin
+					aload_0;
+					aconst_null;
+					putfield_a 45;		// reference tspSign/tspSign.randomData
+					aload_0;
+					new 67;		// javacard/framework/OwnerPIN
+					dup;
+					sconst_3;
+					getstatic_b 68;		// byte tspSign/tspSign.PIN_SIZE
+					invokespecial 69;		// javacard/framework/OwnerPIN.<init>(BB)V
+					putfield_a 44;		// reference tspSign/tspSign.pin
+					sconst_4;
+					newarray 11;
+					dup;
+					sconst_0;
+					bspush 49;
+					bastore;
+					dup;
+					sconst_1;
+					bspush 50;
+					bastore;
+					dup;
+					sconst_2;
+					bspush 51;
+					bastore;
+					dup;
+					sconst_3;
+					bspush 52;
+					bastore;
+					astore_1;
+				L1:	getfield_a_this 44;		// reference tspSign/tspSign.pin
+					aload_1;
+					sconst_0;
+					getstatic_b 68;		// byte tspSign/tspSign.PIN_SIZE
+					invokevirtual 70;		// update([BSB)V
+					getfield_a_this 44;		// reference tspSign/tspSign.pin
+					invokevirtual 71;		// resetAndUnblock()V
+					aload_0;
+					sconst_4;
+					sconst_2;
+					invokestatic 58;		// javacard/framework/JCSystem.makeTransientByteArray(SB)[B
+					putfield_a 46;		// reference tspSign/tspSign.pinValue
+					aload_0;
+					sconst_2;
+					invokestatic 73;		// javacard/security/RandomData.getInstance(B)Ljavacard/security/RandomData;
+					putfield_a 45;		// reference tspSign/tspSign.randomData
+					aload_0;
+					bspush 8;
+					sconst_2;
+					invokestatic 58;		// javacard/framework/JCSystem.makeTransientByteArray(SB)[B
+					putfield_a 47;		// reference tspSign/tspSign.nonce
+					sconst_5;
+					sspush 1024;
+					sconst_0;
+					invokestatic 75;		// javacard/security/KeyBuilder.buildKey(BSZ)Ljavacard/security/Key;
+					checkcast 0 76;		// T_CLASSORINTERFACE javacard/security/RSAPrivateKey
+					putstatic_a 77;		// reference tspSign/tspSign.cardPrivateKey
+					getstatic_a 77;		// reference tspSign/tspSign.cardPrivateKey
+					getstatic_a 78;		// reference tspSign/tspSign.cardPrivateKeyModulus
+					sconst_0;
+					sspush 128;
+					invokeinterface 4 76 7;		// javacard/security/RSAPrivateKey
+					getstatic_a 77;		// reference tspSign/tspSign.cardPrivateKey
+					getstatic_a 79;		// reference tspSign/tspSign.cardPrivateKeyExponent
+					sconst_0;
+					sspush 128;
+					invokeinterface 4 76 6;		// javacard/security/RSAPrivateKey
+					sconst_5;
+					sspush 2048;
+					sconst_0;
+					invokestatic 75;		// javacard/security/KeyBuilder.buildKey(BSZ)Ljavacard/security/Key;
+					checkcast 0 76;		// T_CLASSORINTERFACE javacard/security/RSAPrivateKey
+					putstatic_a 80;		// reference tspSign/tspSign.cardPrivateKey2
+					getstatic_a 80;		// reference tspSign/tspSign.cardPrivateKey2
+					getstatic_a 81;		// reference tspSign/tspSign.cardPrivateKeyModulus2
+					sconst_0;
+					sspush 256;
+					invokeinterface 4 76 7;		// javacard/security/RSAPrivateKey
+					getstatic_a 80;		// reference tspSign/tspSign.cardPrivateKey2
+					getstatic_a 82;		// reference tspSign/tspSign.cardPrivateKeyExponent2
+					sconst_0;
+					sspush 256;
+					invokeinterface 4 76 6;		// javacard/security/RSAPrivateKey
+					bspush 6;
+					sspush 1024;
+					sconst_0;
+					invokestatic 75;		// javacard/security/KeyBuilder.buildKey(BSZ)Ljavacard/security/Key;
+					checkcast 0 83;		// T_CLASSORINTERFACE javacard/security/RSAPrivateCrtKey
+					putstatic_a 84;		// reference tspSign/tspSign.cardPrivateCrtKey
+					getstatic_a 84;		// reference tspSign/tspSign.cardPrivateCrtKey
+					getstatic_a 85;		// reference tspSign/tspSign.cardPrivateCrtKeyP
+					sconst_0;
+					bspush 64;
+					invokeinterface 4 83 11;		// javacard/security/RSAPrivateCrtKey
+					getstatic_a 84;		// reference tspSign/tspSign.cardPrivateCrtKey
+					getstatic_a 86;		// reference tspSign/tspSign.cardPrivateCrtKeyQ
+					sconst_0;
+					bspush 64;
+					invokeinterface 4 83 13;		// javacard/security/RSAPrivateCrtKey
+					getstatic_a 84;		// reference tspSign/tspSign.cardPrivateCrtKey
+					getstatic_a 87;		// reference tspSign/tspSign.cardPrivateCrtKeyDP
+					sconst_0;
+					bspush 64;
+					invokeinterface 4 83 9;		// javacard/security/RSAPrivateCrtKey
+					getstatic_a 84;		// reference tspSign/tspSign.cardPrivateCrtKey
+					getstatic_a 88;		// reference tspSign/tspSign.cardPrivateCrtKeyDQ
+					sconst_0;
+					bspush 64;
+					invokeinterface 4 83 10;		// javacard/security/RSAPrivateCrtKey
+					getstatic_a 84;		// reference tspSign/tspSign.cardPrivateCrtKey
+					getstatic_a 89;		// reference tspSign/tspSign.cardPrivateCrtKeyPQ
+					sconst_0;
+					bspush 64;
+					invokeinterface 4 83 12;		// javacard/security/RSAPrivateCrtKey
+					sconst_4;
+					sspush 1024;
+					sconst_0;
+					invokestatic 75;		// javacard/security/KeyBuilder.buildKey(BSZ)Ljavacard/security/Key;
+					checkcast 0 90;		// T_CLASSORINTERFACE javacard/security/RSAPublicKey
+					putstatic_a 91;		// reference tspSign/tspSign.caPublicKey
+					getstatic_a 91;		// reference tspSign/tspSign.caPublicKey
+					getstatic_a 92;		// reference tspSign/tspSign.caPublicKeyModulus
+					sconst_0;
+					sspush 128;
+					invokeinterface 4 90 7;		// javacard/security/RSAPublicKey
+					getstatic_a 91;		// reference tspSign/tspSign.caPublicKey
+					getstatic_a 93;		// reference tspSign/tspSign.caPublicKeyExponent
+					sconst_0;
+					sconst_3;
+					invokeinterface 4 90 6;		// javacard/security/RSAPublicKey
+					sconst_4;
+					sspush 2048;
+					sconst_0;
+					invokestatic 75;		// javacard/security/KeyBuilder.buildKey(BSZ)Ljavacard/security/Key;
+					checkcast 0 90;		// T_CLASSORINTERFACE javacard/security/RSAPublicKey
+					putstatic_a 94;		// reference tspSign/tspSign.caPublicKey2
+					getstatic_a 94;		// reference tspSign/tspSign.caPublicKey2
+					getstatic_a 95;		// reference tspSign/tspSign.caPublicKeyModulus2
+					sconst_0;
+					sspush 256;
+					invokeinterface 4 90 7;		// javacard/security/RSAPublicKey
+					getstatic_a 94;		// reference tspSign/tspSign.caPublicKey2
+					getstatic_a 96;		// reference tspSign/tspSign.caPublicKeyExponent2
+					sconst_0;
+					sconst_3;
+					invokeinterface 4 90 6;		// javacard/security/RSAPublicKey
+					bspush 6;
+					sspush 2048;
+					sconst_0;
+					invokestatic 75;		// javacard/security/KeyBuilder.buildKey(BSZ)Ljavacard/security/Key;
+					checkcast 0 83;		// T_CLASSORINTERFACE javacard/security/RSAPrivateCrtKey
+					putstatic_a 97;		// reference tspSign/tspSign.cardPrivateCrtKey2
+					getstatic_a 97;		// reference tspSign/tspSign.cardPrivateCrtKey2
+					getstatic_a 98;		// reference tspSign/tspSign.cardPrivateCrtKeyP2
+					sconst_0;
+					sspush 128;
+					invokeinterface 4 83 11;		// javacard/security/RSAPrivateCrtKey
+					getstatic_a 97;		// reference tspSign/tspSign.cardPrivateCrtKey2
+					getstatic_a 99;		// reference tspSign/tspSign.cardPrivateCrtKeyQ2
+					sconst_0;
+					sspush 128;
+					invokeinterface 4 83 13;		// javacard/security/RSAPrivateCrtKey
+					getstatic_a 97;		// reference tspSign/tspSign.cardPrivateCrtKey2
+					getstatic_a 100;		// reference tspSign/tspSign.cardPrivateCrtKeyDP2
+					sconst_0;
+					sspush 128;
+					invokeinterface 4 83 9;		// javacard/security/RSAPrivateCrtKey
+					getstatic_a 97;		// reference tspSign/tspSign.cardPrivateCrtKey2
+					getstatic_a 101;		// reference tspSign/tspSign.cardPrivateCrtKeyDQ2
+					sconst_0;
+					sspush 128;
+					invokeinterface 4 83 10;		// javacard/security/RSAPrivateCrtKey
+					getstatic_a 97;		// reference tspSign/tspSign.cardPrivateCrtKey2
+					getstatic_a 102;		// reference tspSign/tspSign.cardPrivateCrtKeyPQ2
+					sconst_0;
+					sspush 128;
+					invokeinterface 4 83 12;		// javacard/security/RSAPrivateCrtKey
+					sconst_4;
+					sspush 1024;
+					sconst_0;
+					invokestatic 75;		// javacard/security/KeyBuilder.buildKey(BSZ)Ljavacard/security/Key;
+					checkcast 0 90;		// T_CLASSORINTERFACE javacard/security/RSAPublicKey
+					putstatic_a 103;		// reference tspSign/tspSign.tsaPublicKey
+					sconst_4;
+					sspush 2048;
+					sconst_0;
+					invokestatic 75;		// javacard/security/KeyBuilder.buildKey(BSZ)Ljavacard/security/Key;
+					checkcast 0 90;		// T_CLASSORINTERFACE javacard/security/RSAPublicKey
+					putstatic_a 104;		// reference tspSign/tspSign.tsaPublicKey2
+					new 105;		// tspSign/TimeStampResp
+					dup;
+					invokespecial 106;		// tspSign/TimeStampResp.<init>()V
+					putstatic_a 107;		// reference tspSign/tspSign.timeStampResp
+					new 108;		// tspSign/X509Certificate
+					dup;
+					invokespecial 109;		// tspSign/X509Certificate.<init>()V
+					putstatic_a 110;		// reference tspSign/tspSign.x509certificate
+					new 111;		// tspSign/X509CRL
+					dup;
+					invokespecial 112;		// tspSign/X509CRL.<init>()V
+					putstatic_a 113;		// reference tspSign/tspSign.x509crl
+					bspush 10;
+					sconst_0;
+					invokestatic 114;		// javacard/security/Signature.getInstance(BZ)Ljavacard/security/Signature;
+					putstatic_a 115;		// reference tspSign/tspSign.signature
+					return;
+		}
+
+		.method public process(Ljavacard/framework/APDU;)V 7 {
+			.stack 2;
+			.locals 3;
+
+			.descriptor	Ljavacard/framework/APDU;	1.10;
+
+				L0:	aload_0;
+					invokevirtual 117;		// selectingApplet()Z
+					ifeq L2;
+				L1:	return;
+				L2:	aload_1;
+					invokevirtual 118;		// getBuffer()[B
+					astore_2;
+				L3:	aload_2;
+					sconst_0;
+					baload;
+					sstore_3;
+				L4:	aload_2;
+					sconst_1;
+					baload;
+					sstore 4;
+				L5:	sload 4;
+					slookupswitch L13 7 -124 L6 -122 L8 -121 L9 -64 L11 -52 L10 32 L7 102 L12;
+				L6:	aload_0;
+					aload_1;
+					invokespecial 119;		// tspSign/tspSign.processGetChallenge(Ljavacard/framework/APDU;)V
+					goto L14;
+				L7:	aload_0;
+					aload_1;
+					invokespecial 120;		// tspSign/tspSign.processVerify(Ljavacard/framework/APDU;)V
+					goto L14;
+				L8:	aload_0;
+					aload_1;
+					invokespecial 121;		// tspSign/tspSign.processSign(Ljavacard/framework/APDU;)V
+					goto L14;
+				L9:	aload_0;
+					aload_1;
+					invokespecial 122;		// tspSign/tspSign.processTSASign(Ljavacard/framework/APDU;)V
+					goto L14;
+				L10:	aload_0;
+					aload_1;
+					invokevirtual 123;		// processFillBuffer(Ljavacard/framework/APDU;)V
+					goto L14;
+				L11:	aload_0;
+					aload_1;
+					invokespecial 124;		// tspSign/tspSign.processGetResponse(Ljavacard/framework/APDU;)V
+					goto L14;
+				L12:	aload_0;
+					aload_1;
+					invokespecial 125;		// tspSign/tspSign.processGarbageCollector(Ljavacard/framework/APDU;)V
+					goto L14;
+				L13:	sspush 27904;
+					invokestatic 126;		// javacard/framework/ISOException.throwIt(S)V
+				L14:	goto L20;
+				L15:	astore_2;
+				L16:	aload_2;
+					invokevirtual 127;		// getReason()S
+					sstore_3;
+				L17:	sload_3;
+					sconst_5;
+					if_scmpeq L19;
+				L18:	sload_3;
+					sconst_2;
+					if_scmpne L20;
+				L19:	sspush 26368;
+					invokestatic 126;		// javacard/framework/ISOException.throwIt(S)V
+				L20:	return;
+			.exceptionTable {
+				// start_block end_block handler_block catch_type_index
+				L2 L14 L15 116;
+			}
+		}
+
+		.method private processGetChallenge(Ljavacard/framework/APDU;)V {
+			.stack 4;
+			.locals 0;
+
+			.descriptor	Ljavacard/framework/APDU;	1.10;
+
+				L0:	getfield_a_this 45;		// reference tspSign/tspSign.randomData
+					getfield_a_this 47;		// reference tspSign/tspSign.nonce
+					sconst_0;
+					bspush 8;
+					invokevirtual 128;		// generateData([BSS)V
+					aload_1;
+					invokevirtual 129;		// setOutgoing()S
+					pop;
+					aload_1;
+					bspush 8;
+					invokevirtual 130;		// setOutgoingLength(S)V
+					aload_1;
+					getfield_a_this 47;		// reference tspSign/tspSign.nonce
+					sconst_0;
+					bspush 8;
+					invokevirtual 131;		// sendBytesLong([BSS)V
+					return;
+		}
+
+		.method private processVerify(Ljavacard/framework/APDU;)V {
+			.stack 5;
+			.locals 2;
+
+			.descriptor	Ljavacard/framework/APDU;	1.10;
+
+				L0:	aload_1;
+					invokevirtual 132;		// setIncomingAndReceive()S
+					pop;
+					aload_1;
+					invokevirtual 118;		// getBuffer()[B
+					astore_2;
+				L1:	aload_2;
+					sconst_2;
+					baload;
+					ifne L3;
+				L2:	aload_2;
+					sconst_3;
+					baload;
+					bspush -128;
+					if_scmpeq L4;
+				L3:	sspush 27270;
+					invokestatic 126;		// javacard/framework/ISOException.throwIt(S)V
+				L4:	aload_2;
+					sconst_4;
+					baload;
+					sstore_3;
+				L5:	sload_3;
+					getstatic_b 68;		// byte tspSign/tspSign.PIN_SIZE
+					if_scmpeq L7;
+				L6:	sspush 26368;
+					invokestatic 126;		// javacard/framework/ISOException.throwIt(S)V
+				L7:	aload_2;
+					sconst_5;
+					getfield_a_this 46;		// reference tspSign/tspSign.pinValue
+					sconst_0;
+					sload_3;
+					invokestatic 133;		// javacard/framework/Util.arrayCopyNonAtomic([BS[BSS)S
+					pop;
+					getfield_a_this 44;		// reference tspSign/tspSign.pin
+					getfield_a_this 46;		// reference tspSign/tspSign.pinValue
+					sconst_0;
+					getstatic_b 68;		// byte tspSign/tspSign.PIN_SIZE
+					invokevirtual 134;		// check([BSB)Z
+					ifne L9;
+				L8:	sspush 25536;
+					getfield_a_this 44;		// reference tspSign/tspSign.pin
+					invokevirtual 135;		// getTriesRemaining()B
+					sor;
+					invokestatic 126;		// javacard/framework/ISOException.throwIt(S)V
+				L9:	return;
+		}
+
+		.method  readExtendedLengthData(Ljavacard/framework/APDU;[BS)S 128 {
+			.stack 5;
+			.locals 4;
+
+			.descriptor	Ljavacard/framework/APDU;	1.10;
+
+				L0:	aload_1;
+					invokevirtual 132;		// setIncomingAndReceive()S
+					sstore 4;
+				L1:	aload_1;
+					invokevirtual 136;		// getIncomingLength()S
+					sstore 5;
+				L2:	sload 5;
+					ifne L4;
+				L3:	sload 5;
+					sreturn;
+				L4:	sload 5;
+					sspush 2200;
+					if_scmple L6;
+				L5:	sspush 26368;
+					invokestatic 126;		// javacard/framework/ISOException.throwIt(S)V
+				L6:	aload_1;
+					invokevirtual 118;		// getBuffer()[B
+					astore 6;
+				L7:	aload 6;
+					bspush 7;
+					aload_2;
+					sload_3;
+					sload 4;
+					invokestatic 133;		// javacard/framework/Util.arrayCopyNonAtomic([BS[BSS)S
+					sstore_3;
+					sload 5;
+					sload 4;
+					ssub;
+					sstore 7;
+				L8:	sload 7;
+					ifle L10;
+				L9:	aload_1;
+					sconst_0;
+					invokevirtual 137;		// receiveBytes(S)S
+					sstore 4;
+					aload_1;
+					invokevirtual 118;		// getBuffer()[B
+					astore 6;
+					sload 7;
+					sload 4;
+					ssub;
+					sstore 7;
+					aload 6;
+					sconst_0;
+					aload_2;
+					sload_3;
+					sload 4;
+					invokestatic 133;		// javacard/framework/Util.arrayCopyNonAtomic([BS[BSS)S
+					sstore_3;
+					goto L8;
+				L10:	sload 5;
+					sreturn;
+		}
+
+		.method  processFillBuffer(Ljavacard/framework/APDU;)V 129 {
+			.stack 4;
+			.locals 6;
+
+			.descriptor	Ljavacard/framework/APDU;	1.10;
+
+				L0:	aload_1;
+					invokevirtual 118;		// getBuffer()[B
+					astore_2;
+				L1:	aload_2;
+					sconst_2;
+					baload;
+					sstore_3;
+				L2:	aload_2;
+					sconst_3;
+					baload;
+					sstore 4;
+				L3:	sload_3;
+					sload 4;
+					invokestatic 53;		// javacard/framework/Util.makeShort(BB)S
+					sstore 5;
+				L4:	getstatic_a 138;		// reference tspSign/tspSign.bigBuffer
+					astore 6;
+				L5:	aload_0;
+					aload_1;
+					aload 6;
+					sload 5;
+					invokevirtual 139;		// readExtendedLengthData(Ljavacard/framework/APDU;[BS)S
+					sstore 7;
+				L6:	return;
+		}
+
+		.method private processGetResponse(Ljavacard/framework/APDU;)V {
+			.stack 4;
+			.locals 6;
+
+			.descriptor	Ljavacard/framework/APDU;	1.10;
+
+				L0:	aload_1;
+					invokevirtual 118;		// getBuffer()[B
+					astore_2;
+				L1:	aload_2;
+					sconst_2;
+					baload;
+					sstore_3;
+				L2:	aload_2;
+					sconst_3;
+					baload;
+					sstore 4;
+				L3:	sload_3;
+					sload 4;
+					invokestatic 53;		// javacard/framework/Util.makeShort(BB)S
+					sstore 5;
+				L4:	aload_2;
+					sconst_5;
+					baload;
+					aload_2;
+					bspush 6;
+					baload;
+					invokestatic 53;		// javacard/framework/Util.makeShort(BB)S
+					sstore 6;
+				L5:	getstatic_a 138;		// reference tspSign/tspSign.bigBuffer
+					astore 7;
+				L6:	aload_1;
+					invokevirtual 129;		// setOutgoing()S
+					pop;
+					aload_1;
+					sload 6;
+					invokevirtual 130;		// setOutgoingLength(S)V
+					aload_1;
+					aload 7;
+					sload 5;
+					sload 6;
+					invokevirtual 131;		// sendBytesLong([BSS)V
+					return;
+		}
+
+		.method private processSign(Ljavacard/framework/APDU;)V {
+			.stack 6;
+			.locals 5;
+
+			.descriptor	Ljavacard/framework/APDU;	1.10;
+
+				L0:	aload_1;
+					invokevirtual 118;		// getBuffer()[B
+					astore_2;
+				L1:	aload_2;
+					sconst_2;
+					baload;
+					sstore_3;
+				L2:	aload_2;
+					sconst_3;
+					baload;
+					sstore 4;
+				L3:	getfield_a_this 44;		// reference tspSign/tspSign.pin
+					invokevirtual 140;		// isValidated()Z
+					ifne L5;
+				L4:	sspush 27010;
+					invokestatic 126;		// javacard/framework/ISOException.throwIt(S)V
+				L5:	aload_2;
+					sconst_4;
+					baload;
+					sstore 5;
+				L6:	sload_3;
+					sconst_1;
+					if_scmpne L10;
+				L7:	sload 4;
+					sconst_1;
+					if_scmpne L9;
+				L8:	getstatic_a 115;		// reference tspSign/tspSign.signature
+					getstatic_a 77;		// reference tspSign/tspSign.cardPrivateKey
+					sconst_1;
+					invokevirtual 141;		// init(Ljavacard/security/Key;B)V
+					goto L13;
+				L9:	getstatic_a 115;		// reference tspSign/tspSign.signature
+					getstatic_a 84;		// reference tspSign/tspSign.cardPrivateCrtKey
+					sconst_1;
+					invokevirtual 141;		// init(Ljavacard/security/Key;B)V
+					goto L13;
+				L10:	sload 4;
+					sconst_1;
+					if_scmpne L12;
+				L11:	getstatic_a 115;		// reference tspSign/tspSign.signature
+					getstatic_a 80;		// reference tspSign/tspSign.cardPrivateKey2
+					sconst_1;
+					invokevirtual 141;		// init(Ljavacard/security/Key;B)V
+					goto L13;
+				L12:	getstatic_a 115;		// reference tspSign/tspSign.signature
+					getstatic_a 97;		// reference tspSign/tspSign.cardPrivateCrtKey2
+					sconst_1;
+					invokevirtual 141;		// init(Ljavacard/security/Key;B)V
+				L13:	getstatic_a 115;		// reference tspSign/tspSign.signature
+					aload_2;
+					sconst_5;
+					sload 5;
+					getstatic_a 138;		// reference tspSign/tspSign.bigBuffer
+					sconst_0;
+					invokevirtual 142;		// sign([BSS[BS)S
+					sstore 6;
+				L14:	sload 6;
+					sspush 255;
+					if_scmple L16;
+				L15:	sspush 255;
+					sstore 6;
+				L16:	aload_1;
+					invokevirtual 129;		// setOutgoing()S
+					pop;
+					aload_1;
+					sload 6;
+					invokevirtual 130;		// setOutgoingLength(S)V
+					aload_1;
+					getstatic_a 138;		// reference tspSign/tspSign.bigBuffer
+					sconst_0;
+					sload 6;
+					invokevirtual 131;		// sendBytesLong([BSS)V
+					return;
+		}
+
+		.method private processTSASign(Ljavacard/framework/APDU;)V {
+			.stack 7;
+			.locals 12;
+
+			.descriptor	Ljavacard/framework/APDU;	1.10;
+
+				L0:	aload_1;
+					invokevirtual 118;		// getBuffer()[B
+					astore_2;
+				L1:	aload_2;
+					sconst_2;
+					baload;
+					sstore_3;
+				L2:	aload_2;
+					sconst_3;
+					baload;
+					sstore 4;
+				L3:	getfield_a_this 44;		// reference tspSign/tspSign.pin
+					invokevirtual 140;		// isValidated()Z
+					ifne L5;
+				L4:	sspush 27010;
+					invokestatic 126;		// javacard/framework/ISOException.throwIt(S)V
+				L5:	getstatic_a 138;		// reference tspSign/tspSign.bigBuffer
+					astore 5;
+				L6:	aload_0;
+					aload_1;
+					aload 5;
+					sconst_0;
+					invokevirtual 139;		// readExtendedLengthData(Ljavacard/framework/APDU;[BS)S
+					sstore 6;
+				L7:	getstatic_a 107;		// reference tspSign/tspSign.timeStampResp
+					aload 5;
+					sconst_0;
+					sconst_1;
+					invokevirtual 143;		// Parse([BSZ)V
+					getfield_a_this 47;		// reference tspSign/tspSign.nonce
+					sconst_0;
+					getstatic_a 107;		// reference tspSign/tspSign.timeStampResp
+					getfield_a 8;		// reference tspSign/TimeStampResp.nonce
+					sconst_0;
+					bspush 8;
+					invokestatic 65;		// javacard/framework/Util.arrayCompare([BS[BSS)B
+					ifeq L9;
+				L8:	sspush 27012;
+					invokestatic 126;		// javacard/framework/ISOException.throwIt(S)V
+				L9:	getstatic_a 110;		// reference tspSign/tspSign.x509certificate
+					aload 5;
+					getstatic_a 107;		// reference tspSign/tspSign.timeStampResp
+					getfield_s 12;		// short tspSign/TimeStampResp.certificateIndex
+					sconst_1;
+					invokevirtual 144;		// Parse([BSZ)V
+					sload_3;
+					sconst_1;
+					if_scmpne L11;
+				L10:	getstatic_a 103;		// reference tspSign/tspSign.tsaPublicKey
+					aload 5;
+					getstatic_a 110;		// reference tspSign/tspSign.x509certificate
+					getfield_s 35;		// short tspSign/X509Certificate.publicKeyModulusIndex
+					getstatic_a 110;		// reference tspSign/tspSign.x509certificate
+					getfield_s 36;		// short tspSign/X509Certificate.publicKeyModulusLen
+					invokeinterface 4 90 7;		// javacard/security/RSAPublicKey
+					getstatic_a 103;		// reference tspSign/tspSign.tsaPublicKey
+					aload 5;
+					getstatic_a 110;		// reference tspSign/tspSign.x509certificate
+					getfield_s 37;		// short tspSign/X509Certificate.publicKeyExponentIndex
+					getstatic_a 110;		// reference tspSign/tspSign.x509certificate
+					getfield_s 38;		// short tspSign/X509Certificate.publicKeyExponentLen
+					invokeinterface 4 90 6;		// javacard/security/RSAPublicKey
+					getstatic_a 115;		// reference tspSign/tspSign.signature
+					getstatic_a 103;		// reference tspSign/tspSign.tsaPublicKey
+					sconst_2;
+					invokevirtual 141;		// init(Ljavacard/security/Key;B)V
+					goto L12;
+				L11:	getstatic_a 104;		// reference tspSign/tspSign.tsaPublicKey2
+					aload 5;
+					getstatic_a 110;		// reference tspSign/tspSign.x509certificate
+					getfield_s 35;		// short tspSign/X509Certificate.publicKeyModulusIndex
+					getstatic_a 110;		// reference tspSign/tspSign.x509certificate
+					getfield_s 36;		// short tspSign/X509Certificate.publicKeyModulusLen
+					invokeinterface 4 90 7;		// javacard/security/RSAPublicKey
+					getstatic_a 104;		// reference tspSign/tspSign.tsaPublicKey2
+					aload 5;
+					getstatic_a 110;		// reference tspSign/tspSign.x509certificate
+					getfield_s 37;		// short tspSign/X509Certificate.publicKeyExponentIndex
+					getstatic_a 110;		// reference tspSign/tspSign.x509certificate
+					getfield_s 38;		// short tspSign/X509Certificate.publicKeyExponentLen
+					invokeinterface 4 90 6;		// javacard/security/RSAPublicKey
+					getstatic_a 115;		// reference tspSign/tspSign.signature
+					getstatic_a 104;		// reference tspSign/tspSign.tsaPublicKey2
+					sconst_2;
+					invokevirtual 141;		// init(Ljavacard/security/Key;B)V
+				L12:	getstatic_a 115;		// reference tspSign/tspSign.signature
+					aload 5;
+					getstatic_a 107;		// reference tspSign/tspSign.timeStampResp
+					getfield_s 14;		// short tspSign/TimeStampResp.tstInfoIndex
+					getstatic_a 107;		// reference tspSign/tspSign.timeStampResp
+					getfield_s 15;		// short tspSign/TimeStampResp.tstInfoLen
+					aload 5;
+					getstatic_a 107;		// reference tspSign/tspSign.timeStampResp
+					getfield_s 16;		// short tspSign/TimeStampResp.signatureIndex
+					getstatic_a 107;		// reference tspSign/tspSign.timeStampResp
+					getfield_s 17;		// short tspSign/TimeStampResp.signatureLen
+					invokevirtual 145;		// verify([BSS[BSS)Z
+					sstore 7;
+				L13:	getstatic_a 107;		// reference tspSign/tspSign.timeStampResp
+					getfield_a 18;		// reference tspSign/TimeStampResp.time
+					sconst_2;
+					getstatic_a 110;		// reference tspSign/tspSign.x509certificate
+					getfield_a 39;		// reference tspSign/X509Certificate.notBefore
+					sconst_0;
+					bspush 12;
+					invokestatic 65;		// javacard/framework/Util.arrayCompare([BS[BSS)B
+					sconst_m1;
+					if_scmpeq L15;
+				L14:	getstatic_a 110;		// reference tspSign/tspSign.x509certificate
+					getfield_a 40;		// reference tspSign/X509Certificate.notAfter
+					sconst_0;
+					getstatic_a 107;		// reference tspSign/tspSign.timeStampResp
+					getfield_a 18;		// reference tspSign/TimeStampResp.time
+					sconst_2;
+					bspush 12;
+					invokestatic 65;		// javacard/framework/Util.arrayCompare([BS[BSS)B
+					sconst_m1;
+					if_scmpne L16;
+				L15:	sspush 27012;
+					invokestatic 126;		// javacard/framework/ISOException.throwIt(S)V
+				L16:	sload_3;
+					sconst_1;
+					if_scmpne L18;
+				L17:	getstatic_a 115;		// reference tspSign/tspSign.signature
+					getstatic_a 91;		// reference tspSign/tspSign.caPublicKey
+					sconst_2;
+					invokevirtual 141;		// init(Ljavacard/security/Key;B)V
+					goto L19;
+				L18:	getstatic_a 115;		// reference tspSign/tspSign.signature
+					getstatic_a 94;		// reference tspSign/tspSign.caPublicKey2
+					sconst_2;
+					invokevirtual 141;		// init(Ljavacard/security/Key;B)V
+				L19:	getstatic_a 115;		// reference tspSign/tspSign.signature
+					aload 5;
+					getstatic_a 110;		// reference tspSign/tspSign.x509certificate
+					getfield_s 31;		// short tspSign/X509Certificate.tbsCertificateIndex
+					getstatic_a 110;		// reference tspSign/tspSign.x509certificate
+					getfield_s 32;		// short tspSign/X509Certificate.tbsCertificateLen
+					aload 5;
+					getstatic_a 110;		// reference tspSign/tspSign.x509certificate
+					getfield_s 33;		// short tspSign/X509Certificate.signatureIndex
+					getstatic_a 110;		// reference tspSign/tspSign.x509certificate
+					getfield_s 34;		// short tspSign/X509Certificate.signatureLen
+					invokevirtual 145;		// verify([BSS[BSS)Z
+					sstore 7;
+					sload 7;
+					ifne L21;
+				L20:	sspush 27012;
+					invokestatic 126;		// javacard/framework/ISOException.throwIt(S)V
+				L21:	getstatic_a 113;		// reference tspSign/tspSign.x509crl
+					aload 5;
+					getstatic_a 107;		// reference tspSign/tspSign.timeStampResp
+					getfield_s 13;		// short tspSign/TimeStampResp.crlIndex
+					sconst_1;
+					invokevirtual 146;		// Parse([BSZ)V
+					sload_3;
+					sconst_1;
+					if_scmpne L23;
+				L22:	getstatic_a 115;		// reference tspSign/tspSign.signature
+					getstatic_a 91;		// reference tspSign/tspSign.caPublicKey
+					sconst_2;
+					invokevirtual 141;		// init(Ljavacard/security/Key;B)V
+					goto L24;
+				L23:	getstatic_a 115;		// reference tspSign/tspSign.signature
+					getstatic_a 94;		// reference tspSign/tspSign.caPublicKey2
+					sconst_2;
+					invokevirtual 141;		// init(Ljavacard/security/Key;B)V
+				L24:	getstatic_a 115;		// reference tspSign/tspSign.signature
+					aload 5;
+					getstatic_a 113;		// reference tspSign/tspSign.x509crl
+					getfield_s 22;		// short tspSign/X509CRL.tbsCertListIndex
+					getstatic_a 113;		// reference tspSign/tspSign.x509crl
+					getfield_s 23;		// short tspSign/X509CRL.tbsCertListLen
+					aload 5;
+					getstatic_a 113;		// reference tspSign/tspSign.x509crl
+					getfield_s 24;		// short tspSign/X509CRL.signatureIndex
+					getstatic_a 113;		// reference tspSign/tspSign.x509crl
+					getfield_s 25;		// short tspSign/X509CRL.signatureLen
+					invokevirtual 145;		// verify([BSS[BSS)Z
+					sstore 7;
+					sload 7;
+					ifne L26;
+				L25:	sspush 27012;
+					invokestatic 126;		// javacard/framework/ISOException.throwIt(S)V
+				L26:	getstatic_a 107;		// reference tspSign/tspSign.timeStampResp
+					getfield_a 18;		// reference tspSign/TimeStampResp.time
+					sconst_2;
+					getstatic_a 113;		// reference tspSign/tspSign.x509crl
+					getfield_a 27;		// reference tspSign/X509CRL.thisUpdate
+					sconst_0;
+					bspush 12;
+					invokestatic 65;		// javacard/framework/Util.arrayCompare([BS[BSS)B
+					sconst_m1;
+					if_scmpeq L28;
+				L27:	getstatic_a 113;		// reference tspSign/tspSign.x509crl
+					getfield_a 28;		// reference tspSign/X509CRL.nextUpdate
+					sconst_0;
+					getstatic_a 107;		// reference tspSign/tspSign.timeStampResp
+					getfield_a 18;		// reference tspSign/TimeStampResp.time
+					sconst_2;
+					bspush 12;
+					invokestatic 65;		// javacard/framework/Util.arrayCompare([BS[BSS)B
+					sconst_m1;
+					if_scmpne L29;
+				L28:	sspush 27012;
+					invokestatic 126;		// javacard/framework/ISOException.throwIt(S)V
+				L29:	getstatic_a 113;		// reference tspSign/tspSign.x509crl
+					aload 5;
+					getstatic_a 107;		// reference tspSign/tspSign.timeStampResp
+					getfield_s 13;		// short tspSign/TimeStampResp.crlIndex
+					getstatic_a 110;		// reference tspSign/tspSign.x509certificate
+					getfield_a 43;		// reference tspSign/X509Certificate.serialNumber
+					invokevirtual 147;		// isRevoked([BS[B)Z
+					sstore 8;
+				L30:	sload 8;
+					sconst_1;
+					if_scmpne L32;
+				L31:	sspush 27012;
+					invokestatic 126;		// javacard/framework/ISOException.throwIt(S)V
+				L32:	getstatic_a 138;		// reference tspSign/tspSign.bigBuffer
+					astore 9;
+				L33:	sconst_0;
+					sstore 10;
+				L34:	sload_3;
+					sconst_1;
+					if_scmpne L36;
+				L35:	getstatic_a 148;		// reference tspSign/tspSign.tsrResponseTemplate
+					arraylength;
+					sstore 10;
+					getstatic_a 148;		// reference tspSign/tspSign.tsrResponseTemplate
+					sconst_0;
+					aload 9;
+					sconst_0;
+					sload 10;
+					invokestatic 133;		// javacard/framework/Util.arrayCopyNonAtomic([BS[BSS)S
+					pop;
+					goto L37;
+				L36:	getstatic_a 149;		// reference tspSign/tspSign.tsrResponseTemplate2
+					arraylength;
+					sstore 10;
+					getstatic_a 149;		// reference tspSign/tspSign.tsrResponseTemplate2
+					sconst_0;
+					aload 9;
+					sconst_0;
+					sload 10;
+					invokestatic 133;		// javacard/framework/Util.arrayCopyNonAtomic([BS[BSS)S
+					pop;
+				L37:	bspush 14;
+					newarray 11;
+					astore 11;
+				L38:	bspush 20;
+					newarray 11;
+					astore 12;
+				L39:	getstatic_a 107;		// reference tspSign/tspSign.timeStampResp
+					getfield_a 18;		// reference tspSign/TimeStampResp.time
+					sconst_0;
+					aload 11;
+					sconst_0;
+					bspush 14;
+					invokestatic 133;		// javacard/framework/Util.arrayCopyNonAtomic([BS[BSS)S
+					pop;
+					getstatic_a 107;		// reference tspSign/tspSign.timeStampResp
+					getfield_a 19;		// reference tspSign/TimeStampResp.hash
+					sconst_0;
+					aload 12;
+					sconst_0;
+					bspush 20;
+					invokestatic 133;		// javacard/framework/Util.arrayCopyNonAtomic([BS[BSS)S
+					pop;
+					getstatic_a 107;		// reference tspSign/tspSign.timeStampResp
+					aload 9;
+					sconst_0;
+					sconst_0;
+					invokevirtual 143;		// Parse([BSZ)V
+					aload 11;
+					sconst_0;
+					aload 9;
+					getstatic_a 107;		// reference tspSign/tspSign.timeStampResp
+					getfield_s 9;		// short tspSign/TimeStampResp.timeIndex
+					bspush 14;
+					invokestatic 72;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					pop;
+					aload 12;
+					sconst_0;
+					aload 9;
+					getstatic_a 107;		// reference tspSign/tspSign.timeStampResp
+					getfield_s 10;		// short tspSign/TimeStampResp.hashIndex
+					bspush 20;
+					invokestatic 72;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					pop;
+					sload_3;
+					sconst_1;
+					if_scmpne L43;
+				L40:	sload 4;
+					sconst_1;
+					if_scmpne L42;
+				L41:	getstatic_a 115;		// reference tspSign/tspSign.signature
+					getstatic_a 77;		// reference tspSign/tspSign.cardPrivateKey
+					sconst_1;
+					invokevirtual 141;		// init(Ljavacard/security/Key;B)V
+					goto L46;
+				L42:	getstatic_a 115;		// reference tspSign/tspSign.signature
+					getstatic_a 84;		// reference tspSign/tspSign.cardPrivateCrtKey
+					sconst_1;
+					invokevirtual 141;		// init(Ljavacard/security/Key;B)V
+					goto L46;
+				L43:	sload 4;
+					sconst_1;
+					if_scmpne L45;
+				L44:	getstatic_a 115;		// reference tspSign/tspSign.signature
+					getstatic_a 80;		// reference tspSign/tspSign.cardPrivateKey2
+					sconst_1;
+					invokevirtual 141;		// init(Ljavacard/security/Key;B)V
+					goto L46;
+				L45:	getstatic_a 115;		// reference tspSign/tspSign.signature
+					getstatic_a 97;		// reference tspSign/tspSign.cardPrivateCrtKey2
+					sconst_1;
+					invokevirtual 141;		// init(Ljavacard/security/Key;B)V
+				L46:	getstatic_a 115;		// reference tspSign/tspSign.signature
+					aload 9;
+					getstatic_a 107;		// reference tspSign/tspSign.timeStampResp
+					getfield_s 14;		// short tspSign/TimeStampResp.tstInfoIndex
+					getstatic_a 107;		// reference tspSign/tspSign.timeStampResp
+					getfield_s 15;		// short tspSign/TimeStampResp.tstInfoLen
+					aload 9;
+					getstatic_a 107;		// reference tspSign/tspSign.timeStampResp
+					getfield_s 16;		// short tspSign/TimeStampResp.signatureIndex
+					invokevirtual 142;		// sign([BSS[BS)S
+					pop;
+					sload 6;
+					ifne L50;
+				L47:	sconst_2;
+					newarray 11;
+					astore 13;
+				L48:	aload 13;
+					sconst_1;
+					sload 10;
+					sspush 255;
+					sand;
+					s2b;
+					bastore;
+					aload 13;
+					sconst_0;
+					sload 10;
+					bspush 8;
+					sshr;
+					sspush 255;
+					sand;
+					s2b;
+					bastore;
+					aload_1;
+					invokevirtual 129;		// setOutgoing()S
+					pop;
+					aload_1;
+					sconst_2;
+					invokevirtual 130;		// setOutgoingLength(S)V
+					aload_1;
+					aload 13;
+					sconst_0;
+					sconst_2;
+					invokevirtual 131;		// sendBytesLong([BSS)V
+				L49:	goto L51;
+				L50:	aload_1;
+					invokevirtual 129;		// setOutgoing()S
+					pop;
+					aload_1;
+					sload 10;
+					invokevirtual 130;		// setOutgoingLength(S)V
+					aload_1;
+					aload 9;
+					sconst_0;
+					sload 10;
+					invokevirtual 131;		// sendBytesLong([BSS)V
+				L51:	return;
+		}
+
+		.method private processGarbageCollector(Ljavacard/framework/APDU;)V {
+			.stack 0;
+			.locals 0;
+
+			.descriptor	Ljavacard/framework/APDU;	1.10;
+
+				L0:	invokestatic 150;		// javacard/framework/JCSystem.requestObjectDeletion()V
+					return;
+		}
+
+	}
+
+}

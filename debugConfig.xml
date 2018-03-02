@@ -1,0 +1,11 @@
+<JavaCardProject name="myApplet">
+<USER>
+<PKG name="tspSign" aid="11 22 33 44 55" major="1" minor="0">
+<APPLET aid="11 22 33 44 55 66" instanceaid="" parameter="" authority="" privileges="" index="-13752" name="tspSign"/>
+</PKG>
+<Libs/>
+</USER>
+<DebugInfo>
+<Protocol name="CLTypeA"/>
+</DebugInfo>
+</JavaCardProject>

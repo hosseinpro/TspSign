@@ -1,0 +1,13 @@
+<JavaCardProject name="tspSign">
+<USER>
+<PKG name="tspSign" aid="11 22 33 44 55" major="1" minor="0">
+<APPLET aid="11 22 33 44 55 66" instanceaid="" parameter="" authority="" privileges="" index="20536" name="tspSign"/>
+<CLASS name="X509Certificate"/>
+<CLASS name="X509CRL"/>
+<CLASS name="TLV"/>
+<CLASS name="TimeStampResp"/>
+<CLASS name="TLV2"/>
+</PKG>
+<Libs/>
+</USER>
+</JavaCardProject>
