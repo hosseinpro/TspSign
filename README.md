@@ -35,11 +35,12 @@ Application ID (AID) of TspSign is 1122334455. You can change it if you like.
 
 TspSign APDU commands:
 
-Get nonce:
-00 84 00 00 08
 
-Verify PIN:
-00 20 00 80 04 31323334
+Get nonce: 00 84 00 00 08
+
+
+Verify PIN: 00 20 00 80 04 31323334
+
 
 Fill card buffer (if your card does not support extended length and you need chaining):
 
@@ -51,6 +52,7 @@ LL LL: chunk size
 
 CHUNK: part of data
 
+
 TSP Sign:
 
 00 87 P1 P2 00 LL LL [DATA]
@@ -61,6 +63,7 @@ P2 = 01:ClassicRSA or 02:CRT_RSA(faster version)
 
 LL LL: length of data in two bytes
 
+
 Read signature from buffer ((if your card does not support extended length):
 
 00 C0 P1 P2 02 LL LL
@@ -68,6 +71,7 @@ Read signature from buffer ((if your card does not support extended length):
 P1 and P2: offset
 
 LL LL: length of data
+
 
 Classic Sign (no tspSign):
 
