@@ -41,10 +41,14 @@ Get nonce:
 Verify PIN:
 00 20 00 80 04 31323334
 
-Fill card buffer (if your card does not support extended length):
+Fill card buffer (if your card does not support extended length and you need chaining):
+
 00 CC P1 P2 00 LL LL [CHUNK]
+
 P1 and P2: offset
+
 LL LL: chunk size
+
 CHUNK: part of data
 
 TSP Sign:
@@ -58,14 +62,20 @@ P2 = 01:ClassicRSA or 02:CRT_RSA(faster version)
 LL LL: length of data in two bytes
 
 Read signature from buffer ((if your card does not support extended length):
+
 00 C0 P1 P2 02 LL LL
+
 P1 and P2: offset
+
 LL LL: length of data
 
 Classic Sign (no tspSign):
+
 00 86 P1 P2 00 LL LL [DATA]
+
 P1 = 01:RSA1024 or 02:RSA2048
 
 P2 = 01:ClassicRSA or 02:CRT_RSA(faster version)
+
 LL LL: length of data in two bytes
 
